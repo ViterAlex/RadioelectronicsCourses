@@ -391,15 +391,18 @@ namespace MeshAnalysis
 
         private void button2_Click(object sender, EventArgs e)
         {
-
-            ST newForm = new ST();
-            newForm.ShowDialog();
+            using (TopicTheory newForm = new TopicTheory())
+            {
+                newForm.ShowDialog();
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Theory newForm = new Theory();
-            newForm.ShowDialog();
+            using (Theory newForm = new Theory())
+            {
+                newForm.ShowDialog();
+            }
         }
 
         private void casesControl1_Load(object sender, EventArgs e)

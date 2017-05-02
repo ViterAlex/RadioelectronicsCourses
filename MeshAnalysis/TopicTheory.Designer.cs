@@ -1,6 +1,6 @@
 ﻿namespace MeshAnalysis
 {
-    partial class ST
+    partial class TopicTheory
     {
         /// <summary>
         /// Required designer variable.
@@ -41,16 +41,16 @@
             this.webBrowser1.TabIndex = 0;
             this.webBrowser1.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser1_DocumentCompleted);
             // 
-            // ST
+            // TopicTheory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1004, 461);
             this.Controls.Add(this.webBrowser1);
-            this.Name = "ST";
+            this.Name = "TopicTheory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ST";
+            this.Text = "TopicTheory";
             this.ResumeLayout(false);
 
         }

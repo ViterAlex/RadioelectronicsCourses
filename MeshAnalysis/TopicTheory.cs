@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace MeshAnalysis
 {
-    public partial class ST : Form
+    public partial class TopicTheory : Form
     {
-        public ST()
+        public TopicTheory()
         {
             InitializeComponent();
             webBrowser1.Navigate(System.IO.Path.GetFullPath(Program.TAdress));

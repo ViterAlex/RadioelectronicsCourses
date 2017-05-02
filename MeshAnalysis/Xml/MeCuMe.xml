@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Excercises title="Метод контурных токов"
-            theory="TheoryFiles\MeOfNoPo\MeOfNoPo.html">
+            theory="TheoryFiles\MeCuMe\MeCuMe.html">
   <Excercise id="1">
     <Text>
       Дано: E1 = 10В; R1 = 0,1Ом; R2 = 4Ом; R3 = 8Ом; E3 = 20В; J4 = 40А. Найти: все токи!
