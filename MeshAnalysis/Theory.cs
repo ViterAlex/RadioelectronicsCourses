@@ -12,28 +12,19 @@ namespace MeshAnalysis
         {
             InitializeComponent();
             WindowState = FormWindowState.Maximized;
+            Load += (sender, args) => CreateButtons();
+        }
 
+        private void CreateButtons()
+        {
             foreach (var file in Directory.EnumerateFiles(Path.GetFullPath("xml")))
             {
-                var btn = new Button
-                          {
-                              Anchor = AnchorStyles.None,
-                              BackColor = Color.FromArgb(68, 187, 255),
-                              Size = new Size(250, 50),
-                              Font = new Font(Font.FontFamily, 10, GraphicsUnit.Point),
-                              FlatStyle = FlatStyle.Flat,
-                              FlatAppearance =
-                              {
-                                  BorderColor = Color.FromArgb(17, 34, 51),
-                                  BorderSize = 1
-                              }
-                          };
                 var doc = XDocument.Load(file);
+                var btn = Program.CreateButton(doc.Root.Attribute("title").Value, Font);
                 btn.Click += (sender, args) =>
                 {
                     webBrowser1.Navigate(Path.GetFullPath(doc.Root.Attribute("theory").Value));
                 };
-                btn.Text = doc.Root.Attribute("title").Value;
                 flowLayoutPanel1.Controls.Add(btn);
             }
         }
@@ -42,6 +33,6 @@ namespace MeshAnalysis
         {
             Close();
         }
-        
+
     }
 }

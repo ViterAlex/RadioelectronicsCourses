@@ -43,7 +43,7 @@
             this.button7.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(34)))), ((int)(((byte)(51)))));
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.button7.Location = new System.Drawing.Point(375, 186);
+            this.button7.Location = new System.Drawing.Point(147, 318);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(277, 56);
             this.button7.TabIndex = 16;
@@ -59,7 +59,7 @@
             this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(34)))), ((int)(((byte)(51)))));
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.button2.Location = new System.Drawing.Point(375, 95);
+            this.button2.Location = new System.Drawing.Point(147, 227);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(277, 56);
             this.button2.TabIndex = 10;
@@ -89,9 +89,9 @@
             this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(498, 3);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(270, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1, 342);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1, 607);
             this.flowLayoutPanel1.TabIndex = 22;
             this.flowLayoutPanel1.WrapContents = false;
             // 
@@ -108,7 +108,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(997, 348);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(541, 613);
             this.tableLayoutPanel1.TabIndex = 23;
             // 
             // Select
@@ -116,7 +116,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(241)))), ((int)(((byte)(245)))));
-            this.ClientSize = new System.Drawing.Size(997, 348);
+            this.ClientSize = new System.Drawing.Size(541, 613);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button2);
