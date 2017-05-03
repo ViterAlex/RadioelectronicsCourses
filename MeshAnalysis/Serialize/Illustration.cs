@@ -15,7 +15,7 @@ namespace MeshAnalysis
         public string Source { get; set; }
 
         /// <remarks/>
-        [XmlAttribute, EditorBrowsable(EditorBrowsableState.Never)]
-        public string alt { get; set; }
+        [XmlAttribute("alt"), EditorBrowsable(EditorBrowsableState.Never)]
+        public string AltText { get; set; }
     }
 }

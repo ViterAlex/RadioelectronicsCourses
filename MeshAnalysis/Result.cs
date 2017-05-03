@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 
 namespace MeshAnalysis
 {
@@ -11,6 +6,7 @@ namespace MeshAnalysis
     {
         public Excercise Excercise { get; set; }
         public string Message { get; set; }
-        public Image Notes { get; set; }
+        public Image Sketch { get; set; }
+        public string Notes { get; set; }
     }
 }

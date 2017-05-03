@@ -23,9 +23,11 @@ namespace MeshAnalysis
                 CaseList[index] = value;
             }
         }
+
         [XmlElement("Case")]
         public List<Case> CaseList { get; set; }
-        /// <remarks/>
+
+        /// <summary>Идентификатор правильного ответа, если подразумевается только один ответ на вопрос</summary>
         [XmlAttribute("caseId")]
         public byte CaseId { get; set; }
 

@@ -12,30 +12,20 @@ namespace MeshAnalysis
 {
     public partial class Practics : Form
     {
-        Calc C;
-        int k, good = 0, bad = 0, allex = 0, chains = 0, chains1, chains2;
+        int good = 0, bad = 0, allex = 0, chains = 0, chains1, chains2;
         int chains3, chains4, chains5;
         string ex1 = "Задача 1\n", ex2 = "Задача 2", ex3 = "Задача 3",
             ex4 = "Задача 4", ex5 = "Задача 5", br = "<br>", hr = "<hr>",
             pex1, pex2, pex3, pex4, pex5,
             aex1, aex2, aex3, aex4, aex5, try1, zam = "Заметки: ", answ = "Ответ: ", zad = "Условие: ";
-        Color CurrentColor = Color.White;
-        bool isPressed = false;
-        Point CurrentPoint;
-        Point PrevPoint;
-        Graphics g;
-        int t = 5, h = 5;
         int r = 0, gr = 0, b = 0;
 
-        Excercises _excercises;
+        private Excercises _excercises;
         public Practics()
         {
             InitializeComponent();
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            C = new Calc();
-            labelNumber.Text = "0";
-            g = panel1.CreateGraphics();
             using (var reader = new StreamReader(Program.Adress))
             {
                 var serializer = new XmlSerializer(typeof(Excercises));
@@ -43,28 +33,6 @@ namespace MeshAnalysis
             }
             NewExercise();
             MessageBox.Show("ВНИМАНИЕ! На ввод правильного ответа для каждой задачи дано 3(три) попытки. Ответ вводить с точность до тысячных(три знака после запятой), разделяя целую и дробную части запятой(,)(Например: 32,000)");
-        }
-
-        private void Practics_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        //Калькулятор
-        private void CorrectNumber()
-        {
-            //если есть знак "бесконечность" - не даёт писать цифры после него
-            if (labelNumber.Text.IndexOf("∞") != -1)
-                labelNumber.Text = labelNumber.Text.Substring(0, labelNumber.Text.Length - 1);
-
-            //ситуация: слева ноль, а после него НЕ запятая, тогда ноль можно удалить
-            if (labelNumber.Text[0] == '0' && (labelNumber.Text.IndexOf(",") != 1))
-                labelNumber.Text = labelNumber.Text.Remove(0, 1);
-
-            //аналогично предыдущему, только для отрицательного числа
-            if (labelNumber.Text[0] == '-')
-                if (labelNumber.Text[1] == '0' && (labelNumber.Text.IndexOf(",") != 2))
-                    labelNumber.Text = labelNumber.Text.Remove(1, 1);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -76,241 +44,6 @@ namespace MeshAnalysis
             else Close();
         }
 
-        private void button00_Click(object sender, EventArgs e)
-        {
-            labelNumber.Text += "0";
-
-            CorrectNumber();
-        }
-
-        private void button11_Click(object sender, EventArgs e)
-        {
-            labelNumber.Text += "1";
-
-            CorrectNumber();
-        }
-
-        private void button22_Click(object sender, EventArgs e)
-        {
-            labelNumber.Text += "2";
-
-            CorrectNumber();
-        }
-
-        private void button33_Click(object sender, EventArgs e)
-        {
-            labelNumber.Text += "3";
-
-            CorrectNumber();
-        }
-
-        private void button44_Click(object sender, EventArgs e)
-        {
-            labelNumber.Text += "4";
-
-            CorrectNumber();
-        }
-
-        private void button55_Click(object sender, EventArgs e)
-        {
-            labelNumber.Text += "5";
-
-            CorrectNumber();
-        }
-
-        private void button66_Click(object sender, EventArgs e)
-        {
-            labelNumber.Text += "6";
-
-            CorrectNumber();
-        }
-
-        private void button77_Click(object sender, EventArgs e)
-        {
-            labelNumber.Text += "7";
-
-            CorrectNumber();
-        }
-
-        private void button88_Click(object sender, EventArgs e)
-        {
-            labelNumber.Text += "8";
-
-            CorrectNumber();
-        }
-
-        private void button99_Click(object sender, EventArgs e)
-        {
-            labelNumber.Text += "9";
-
-            CorrectNumber();
-        }
-
-        private void buttonPoint_Click(object sender, EventArgs e)
-        {
-            if ((labelNumber.Text.IndexOf(",") == -1) && (labelNumber.Text.IndexOf("∞") == -1))
-                labelNumber.Text += ",";
-        }
-
-        private void buttonClear_Click(object sender, EventArgs e)
-        {
-            labelNumber.Text = "0";
-
-            C.Clear_A();
-            FreeButtons();
-
-            k = 0;
-        }
-
-        private void buttonCalc_Click(object sender, EventArgs e)
-        {
-            if (!buttonMult.Enabled)
-                labelNumber.Text = C.Multiplication(Convert.ToDouble(labelNumber.Text)).ToString();
-
-            if (!buttonDiv.Enabled)
-                labelNumber.Text = C.Division(Convert.ToDouble(labelNumber.Text)).ToString();
-
-            if (!buttonPlus.Enabled)
-                labelNumber.Text = C.Sum(Convert.ToDouble(labelNumber.Text)).ToString();
-
-            if (!buttonMinus.Enabled)
-                labelNumber.Text = C.Subtraction(Convert.ToDouble(labelNumber.Text)).ToString();
-
-            C.Clear_A();
-            FreeButtons();
-
-            k = 0;
-        }
-
-        private void buttonMinus_Click(object sender, EventArgs e)
-        {
-            if (CanPress())
-            {
-                C.Put_A(Convert.ToDouble(labelNumber.Text));
-
-                buttonMinus.Enabled = false;
-
-                labelNumber.Text = "0";
-            }
-        }
-
-        private void buttonPlus_Click(object sender, EventArgs e)
-        {
-            if (CanPress())
-            {
-                C.Put_A(Convert.ToDouble(labelNumber.Text));
-
-                buttonPlus.Enabled = false;
-
-                labelNumber.Text = "0";
-            }
-        }
-
-        private void buttonDiv_Click(object sender, EventArgs e)
-        {
-            if (CanPress())
-            {
-                C.Put_A(Convert.ToDouble(labelNumber.Text));
-
-                buttonDiv.Enabled = false;
-
-                labelNumber.Text = "0";
-            }
-        }
-
-        private void buttonMult_Click(object sender, EventArgs e)
-        {
-            if (CanPress())
-            {
-                C.Put_A(Convert.ToDouble(labelNumber.Text));
-
-                buttonMult.Enabled = false;
-
-                labelNumber.Text = "0";
-            }
-        }
-
-        private void buttonSquare_Click(object sender, EventArgs e)
-        {
-            if (CanPress())
-            {
-                C.Put_A(Convert.ToDouble(labelNumber.Text));
-
-                labelNumber.Text = C.Square().ToString();
-
-                C.Clear_A();
-                FreeButtons();
-            }
-        }
-
-        private void buttonSqrt_Click(object sender, EventArgs e)
-        {
-            if (CanPress())
-            {
-                C.Put_A(Convert.ToDouble(labelNumber.Text));
-
-                labelNumber.Text = C.Sqrt().ToString();
-
-                C.Clear_A();
-                FreeButtons();
-            }
-        }
-
-        private void buttonChangeSign_Click(object sender, EventArgs e)
-        {
-            if (labelNumber.Text[0] == '-')
-                labelNumber.Text = labelNumber.Text.Remove(0, 1);
-            else
-                labelNumber.Text = "-" + labelNumber.Text;
-        }
-        private bool CanPress()
-        {
-            if (!buttonMult.Enabled)
-                return false;
-
-            if (!buttonDiv.Enabled)
-                return false;
-
-            if (!buttonPlus.Enabled)
-                return false;
-
-            if (!buttonMinus.Enabled)
-                return false;
-
-            return true;
-        }
-        private void FreeButtons()
-        {
-            buttonMult.Enabled = true;
-            buttonDiv.Enabled = true;
-            buttonPlus.Enabled = true;
-            buttonMinus.Enabled = true;
-        }
-
-        //Рисование
-
-        private void panel1_MouseUp(object sender, MouseEventArgs e)
-        {
-            isPressed = false;
-        }
-
-        private void panel1_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (isPressed)
-            {
-                PrevPoint = CurrentPoint;
-                CurrentPoint = e.Location;
-                t = Convert.ToInt32(numericUpDown1.Value);
-                h = Convert.ToInt32(numericUpDown1.Value);
-                SolidBrush Brush = new SolidBrush(colorDialog1.Color);
-                g.FillEllipse(Brush, e.X, e.Y, t, h);
-            }
-        }
-
-        private void panel1_MouseDown(object sender, MouseEventArgs e)
-        {
-            isPressed = true;
-        }
         //Тест
         private void NewExercise()
         {
@@ -318,7 +51,7 @@ namespace MeshAnalysis
             {
                 return;
             }
-            pictureBox1.Image = _excercises[_exerciseNumber].GetImage();
+            pictureBox1.Image = _excercises[_exerciseNumber].Caption.GetImage();
             if (pictureBox1.Image == null)
             {
                 pictureBox1.Hide();
@@ -327,14 +60,15 @@ namespace MeshAnalysis
             {
                 pictureBox1.Show();
             }
-            textBox1.Text = _excercises[_exerciseNumber].Text.ToString().Trim();
+            textBox1.Text = _excercises[_exerciseNumber].Caption.ToString();
             casesControl1.SetCases(_excercises[_exerciseNumber].Cases);
             answerButton.Enabled = true;
+            sketchControl1.StartNewSketch();
             //casesControl1.isSel = 0;
-            textBox2.Clear();
-            panel1.Refresh();
+            notesTextBox.Clear();
             //chains = 0;
         }
+
         //Первая задача
         private void ex1Button_Click(object sender, EventArgs e)
         {
@@ -383,11 +117,6 @@ namespace MeshAnalysis
         private int _exerciseNumber;
         private int _bad;
         private int _good;
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            Save();
-        }
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -615,8 +344,9 @@ namespace MeshAnalysis
                 {
                     Excercise = _excercises[_exerciseNumber],
                     Message = casesControl1.GetAnswers(),
-                    //Здесь нужно брать нарисованную картинку и помещать в Notes
-                    //Notes =
+                    //Здесь нужно брать нарисованную картинку и помещать в Sketch
+                    Sketch = sketchControl1.GetSketch(),
+                    Notes = notesTextBox.Text
                 });
                 _exerciseNumber++;
                 NewExercise();
@@ -632,8 +362,9 @@ namespace MeshAnalysis
                 {
                     Excercise = _excercises[_exerciseNumber],
                     Message = casesControl1.GetAnswers(),
-                    //Здесь нужно брать нарисованную картинку и помещать в Notes
-                    //Notes =
+                    //Здесь нужно брать нарисованную картинку и помещать в Sketch
+                    Sketch = sketchControl1.GetSketch(),
+                    Notes = notesTextBox.Text
                 });
                 _exerciseNumber++;
                 NewExercise();
@@ -656,29 +387,11 @@ namespace MeshAnalysis
 
         }
 
-        private void button7_Click_1(object sender, EventArgs e)
-        {
-            DialogResult D = colorDialog1.ShowDialog();
-            if (D == System.Windows.Forms.DialogResult.OK)
-            {
-                CurrentColor = colorDialog1.Color;
-            }
-        }
-
-        private void button8_Click_1(object sender, EventArgs e)
-        {
-            panel1.Refresh();
-        }
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private List<Result> _results = new List<Result>();
         private void Save()
         {
-            using (SaveFileDialog saveFile1 = new SaveFileDialog()) {
+            using (SaveFileDialog saveFile1 = new SaveFileDialog())
+            {
                 saveFile1.DefaultExt = "*.html";
                 saveFile1.Filter = "html|*.html";
                 if (saveFile1.ShowDialog() != System.Windows.Forms.DialogResult.OK
@@ -694,18 +407,18 @@ namespace MeshAnalysis
                         //Заголовок в ячейке
                         sw.WriteLine("<h2>Задача {0}. </h2>", result.Excercise.Id);
                         //Задание
-                        sw.WriteLine(result.Excercise.Text.Text);
+                        sw.WriteLine(result.Excercise.Caption.Text);
                         //Иллюстрация к заданию
-                        sw.WriteLine("<br/>\r\n<img src=\"{0}\"/><br/>", result.Excercise.Text.ImageBase64.Source);
+                        sw.WriteLine("<br/>\r\n<img src=\"{0}\"/><br/>", result.Excercise.Caption.ImageBase64.Source);
                         sw.WriteLine("<h3>{0}</h3>\r\n", "Результат");
                         sw.WriteLine(result.Message.Replace("\r\n", "<br/>"));
-                        //Если есть картинка, то добавляем раздел "Заметки"
-                        if (result.Notes != null)
+                        //Заметки
+                        sw.WriteLine("<h3>{0}</h3><br/>", "Заметки");
+                        sw.WriteLine(result.Notes.Replace("\r\n", "<br/>"));
+                        //Если есть картинка, то добавляем её в раздел "Заметки"
+                        if (result.Sketch != null)
                         {
-                            //Заметки
-                            sw.WriteLine("<h3>{0}</h3><br/>", "Заметки");
-                            sw.WriteLine(
-                                "<img src=\"data:image/png;base64,{0}\"/><br/>", Excercise.ImageToBase64(result.Notes));
+                            sw.WriteLine("<img src=\"{0}\"/><br/>", result.Sketch.ImageToBase64());
                         }
                         sw.WriteLine("</td></tr>");
                     }

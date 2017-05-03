@@ -10,24 +10,21 @@ namespace MeshAnalysis
     [XmlType(AnonymousType = true)]
     public class Case
     {
-        /// <remarks/>
+        /// <summary>Идентификатор ответа</summary>>
         [XmlAttribute("id")]
         public string Id { get; set; }
 
+        /// <summary>Дополнительные текст к ответу</summary>>
         [XmlAttribute("si")]
         public string Si { get; set; }
 
-        /// <remarks/>
+        /// <summary>Правильный ответ</summary>>
         [XmlText]
         public string Value { get; set; }
-
-        #region Overrides of Object
 
         public override string ToString()
         {
             return Value;
         }
-
-        #endregion
     }
 }
