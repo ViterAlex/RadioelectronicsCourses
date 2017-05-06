@@ -5,6 +5,9 @@ using System.Xml.Linq;
 
 namespace MeshAnalysis
 {
+    /// <summary>
+    /// Форма с выбором тестов
+    /// </summary>
     public partial class Select : Form
     {
         public Select()

@@ -40,29 +40,43 @@ namespace MeshAnalysis
             this.ex2Button = new System.Windows.Forms.Button();
             this.ex3Button = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.notesTextBox = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.answerButton = new System.Windows.Forms.Button();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.notesTextBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.sketchControl1 = new MeshAnalysis.Controls.SketchControl();
             this.calcControl1 = new MeshAnalysis.Controls.CalcControl();
             this.casesControl1 = new MeshAnalysis.Controls.CasesControl();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(87)))), ((int)(((byte)(94)))));
+            this.button1.Dock = System.Windows.Forms.DockStyle.Left;
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(34)))), ((int)(((byte)(51)))));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(34)))), ((int)(((byte)(51)))));
-            this.button1.Location = new System.Drawing.Point(0, 6);
+            this.button1.Location = new System.Drawing.Point(3, 16);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(93, 40);
+            this.button1.Size = new System.Drawing.Size(93, 35);
             this.button1.TabIndex = 0;
             this.button1.Text = "Назад";
             this.button1.UseVisualStyleBackColor = false;
@@ -81,21 +95,22 @@ namespace MeshAnalysis
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1135, 46);
+            this.groupBox1.Size = new System.Drawing.Size(1135, 54);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             // 
             // button3
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(204)))), ((int)(((byte)(153)))));
+            this.button3.Dock = System.Windows.Forms.DockStyle.Right;
             this.button3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(34)))), ((int)(((byte)(51)))));
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(34)))), ((int)(((byte)(51)))));
-            this.button3.Location = new System.Drawing.Point(1041, 6);
+            this.button3.Location = new System.Drawing.Point(914, 16);
+            this.button3.Margin = new System.Windows.Forms.Padding(3, 3, 5, 3);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(94, 40);
+            this.button3.Size = new System.Drawing.Size(94, 35);
             this.button3.TabIndex = 5;
             this.button3.Text = "Вся теория";
             this.button3.UseVisualStyleBackColor = false;
@@ -103,15 +118,16 @@ namespace MeshAnalysis
             // 
             // button2
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(204)))), ((int)(((byte)(153)))));
+            this.button2.Dock = System.Windows.Forms.DockStyle.Right;
             this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(34)))), ((int)(((byte)(51)))));
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(34)))), ((int)(((byte)(51)))));
-            this.button2.Location = new System.Drawing.Point(911, 6);
+            this.button2.Location = new System.Drawing.Point(1008, 16);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 3, 5, 3);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(124, 40);
+            this.button2.Size = new System.Drawing.Size(124, 35);
             this.button2.TabIndex = 4;
             this.button2.Text = "Теория по теме";
             this.button2.UseVisualStyleBackColor = false;
@@ -120,12 +136,12 @@ namespace MeshAnalysis
             // ex1Button
             // 
             this.ex1Button.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ex1Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(187)))), ((int)(((byte)(255)))));
+            this.ex1Button.BackColor = global::MeshAnalysis.Properties.Settings.Default.NavButtonBackground;
             this.ex1Button.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(34)))), ((int)(((byte)(51)))));
             this.ex1Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ex1Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.ex1Button.Font = global::MeshAnalysis.Properties.Settings.Default.NavButtonFont;
             this.ex1Button.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(34)))), ((int)(((byte)(51)))));
-            this.ex1Button.Location = new System.Drawing.Point(320, 6);
+            this.ex1Button.Location = new System.Drawing.Point(320, 10);
             this.ex1Button.Name = "ex1Button";
             this.ex1Button.Size = new System.Drawing.Size(94, 40);
             this.ex1Button.TabIndex = 2;
@@ -141,7 +157,7 @@ namespace MeshAnalysis
             this.ex5Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ex5Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.ex5Button.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(34)))), ((int)(((byte)(51)))));
-            this.ex5Button.Location = new System.Drawing.Point(720, 6);
+            this.ex5Button.Location = new System.Drawing.Point(720, 10);
             this.ex5Button.Name = "ex5Button";
             this.ex5Button.Size = new System.Drawing.Size(94, 40);
             this.ex5Button.TabIndex = 3;
@@ -157,7 +173,7 @@ namespace MeshAnalysis
             this.ex4Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ex4Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.ex4Button.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(34)))), ((int)(((byte)(51)))));
-            this.ex4Button.Location = new System.Drawing.Point(620, 6);
+            this.ex4Button.Location = new System.Drawing.Point(620, 10);
             this.ex4Button.Name = "ex4Button";
             this.ex4Button.Size = new System.Drawing.Size(94, 40);
             this.ex4Button.TabIndex = 2;
@@ -173,7 +189,7 @@ namespace MeshAnalysis
             this.ex2Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ex2Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.ex2Button.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(34)))), ((int)(((byte)(51)))));
-            this.ex2Button.Location = new System.Drawing.Point(420, 6);
+            this.ex2Button.Location = new System.Drawing.Point(420, 10);
             this.ex2Button.Name = "ex2Button";
             this.ex2Button.Size = new System.Drawing.Size(94, 40);
             this.ex2Button.TabIndex = 0;
@@ -189,7 +205,7 @@ namespace MeshAnalysis
             this.ex3Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ex3Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.ex3Button.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(34)))), ((int)(((byte)(51)))));
-            this.ex3Button.Location = new System.Drawing.Point(520, 6);
+            this.ex3Button.Location = new System.Drawing.Point(520, 10);
             this.ex3Button.Name = "ex3Button";
             this.ex3Button.Size = new System.Drawing.Size(94, 40);
             this.ex3Button.TabIndex = 1;
@@ -202,43 +218,31 @@ namespace MeshAnalysis
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.Controls.Add(this.notesTextBox, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.casesControl1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.textBox1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.answerButton, 0, 4);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(446, 46);
+            this.tableLayoutPanel1.Controls.Add(this.answerButton, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 3);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 5;
+            this.tableLayoutPanel1.RowCount = 6;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.63786F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 84.36214F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 227F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 254F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 121F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(689, 587);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(753, 579);
             this.tableLayoutPanel1.TabIndex = 6;
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
-            // 
-            // notesTextBox
-            // 
-            this.notesTextBox.BackColor = System.Drawing.Color.White;
-            this.notesTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.notesTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.notesTextBox.Location = new System.Drawing.Point(3, 425);
-            this.notesTextBox.Multiline = true;
-            this.notesTextBox.Name = "notesTextBox";
-            this.notesTextBox.Size = new System.Drawing.Size(683, 120);
-            this.notesTextBox.TabIndex = 8;
             // 
             // pictureBox1
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.pictureBox1, 2);
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 33);
+            this.pictureBox1.Location = new System.Drawing.Point(3, 29);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(683, 159);
+            this.pictureBox1.Size = new System.Drawing.Size(747, 135);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
@@ -252,9 +256,8 @@ namespace MeshAnalysis
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(683, 24);
+            this.textBox1.Size = new System.Drawing.Size(747, 20);
             this.textBox1.TabIndex = 6;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // answerButton
             // 
@@ -265,7 +268,7 @@ namespace MeshAnalysis
             this.answerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.answerButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.answerButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(34)))), ((int)(((byte)(51)))));
-            this.answerButton.Location = new System.Drawing.Point(296, 552);
+            this.answerButton.Location = new System.Drawing.Point(328, 545);
             this.answerButton.Name = "answerButton";
             this.answerButton.Size = new System.Drawing.Size(96, 30);
             this.answerButton.TabIndex = 7;
@@ -273,18 +276,92 @@ namespace MeshAnalysis
             this.answerButton.UseVisualStyleBackColor = false;
             this.answerButton.Click += new System.EventHandler(this.answerButton_Click);
             // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Controls.Add(this.notesTextBox, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 424);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(747, 115);
+            this.tableLayoutPanel2.TabIndex = 8;
+            // 
+            // notesTextBox
+            // 
+            this.notesTextBox.BackColor = System.Drawing.Color.White;
+            this.notesTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.notesTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.notesTextBox.Location = new System.Drawing.Point(3, 20);
+            this.notesTextBox.Multiline = true;
+            this.notesTextBox.Name = "notesTextBox";
+            this.notesTextBox.Size = new System.Drawing.Size(741, 92);
+            this.notesTextBox.TabIndex = 8;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(68, 17);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Заметки:";
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 54);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.splitContainer2);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel1);
+            this.splitContainer1.Size = new System.Drawing.Size(1135, 579);
+            this.splitContainer1.SplitterDistance = 378;
+            this.splitContainer1.TabIndex = 9;
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.sketchControl1);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.calcControl1);
+            this.splitContainer2.Size = new System.Drawing.Size(378, 579);
+            this.splitContainer2.SplitterDistance = 316;
+            this.splitContainer2.TabIndex = 0;
+            // 
             // sketchControl1
             // 
-            this.sketchControl1.Location = new System.Drawing.Point(12, 52);
+            this.sketchControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sketchControl1.Location = new System.Drawing.Point(0, 0);
             this.sketchControl1.Name = "sketchControl1";
-            this.sketchControl1.Size = new System.Drawing.Size(393, 272);
+            this.sketchControl1.Size = new System.Drawing.Size(378, 316);
             this.sketchControl1.TabIndex = 8;
             // 
             // calcControl1
             // 
-            this.calcControl1.Location = new System.Drawing.Point(12, 330);
+            this.calcControl1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.calcControl1.Location = new System.Drawing.Point(0, 0);
             this.calcControl1.Name = "calcControl1";
-            this.calcControl1.Size = new System.Drawing.Size(249, 308);
+            this.calcControl1.Size = new System.Drawing.Size(254, 259);
             this.calcControl1.TabIndex = 7;
             // 
             // casesControl1
@@ -294,13 +371,12 @@ namespace MeshAnalysis
             this.casesControl1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.tableLayoutPanel1.SetColumnSpan(this.casesControl1, 2);
             this.casesControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.casesControl1.Location = new System.Drawing.Point(3, 198);
+            this.casesControl1.Location = new System.Drawing.Point(3, 170);
             this.casesControl1.MinimumSize = new System.Drawing.Size(150, 40);
             this.casesControl1.Name = "casesControl1";
             this.casesControl1.SelectedCaseId = ((byte)(0));
-            this.casesControl1.Size = new System.Drawing.Size(683, 221);
+            this.casesControl1.Size = new System.Drawing.Size(747, 248);
             this.casesControl1.TabIndex = 4;
-            this.casesControl1.Load += new System.EventHandler(this.casesControl1_Load);
             // 
             // Practics
             // 
@@ -308,9 +384,7 @@ namespace MeshAnalysis
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(241)))), ((int)(((byte)(245)))));
             this.ClientSize = new System.Drawing.Size(1135, 633);
-            this.Controls.Add(this.sketchControl1);
-            this.Controls.Add(this.calcControl1);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.groupBox1);
             this.Name = "Practics";
             this.Text = "Практика";
@@ -318,6 +392,16 @@ namespace MeshAnalysis
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -342,5 +426,9 @@ namespace MeshAnalysis
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private CalcControl calcControl1;
         private SketchControl sketchControl1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.SplitContainer splitContainer2;
     }
 }

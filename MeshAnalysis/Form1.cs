@@ -3,6 +3,9 @@ using System.Windows.Forms;
 
 namespace MeshAnalysis
 {
+    /// <summary>
+    /// Основная форма
+    /// </summary>
     public partial class Form1 : Form
     {
         public Form1()

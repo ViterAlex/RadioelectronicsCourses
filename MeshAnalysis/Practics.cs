@@ -10,22 +10,33 @@ using MeshAnalysis.Properties;
 
 namespace MeshAnalysis
 {
+    /// <summary>
+    /// Форма с тестами
+    /// </summary>
     public partial class Practics : Form
     {
-        int good = 0, bad = 0, allex = 0, chains = 0, chains1, chains2;
-        int chains3, chains4, chains5;
-        string ex1 = "Задача 1\n", ex2 = "Задача 2", ex3 = "Задача 3",
-            ex4 = "Задача 4", ex5 = "Задача 5", br = "<br>", hr = "<hr>",
-            pex1, pex2, pex3, pex4, pex5,
-            aex1, aex2, aex3, aex4, aex5, try1, zam = "Заметки: ", answ = "Ответ: ", zad = "Условие: ";
-        int r = 0, gr = 0, b = 0;
+        //int good = 0, bad = 0, chains = 0, chains1, chains2;
 
-        private Excercises _excercises;
+        int allex = 0;
+
+        //int chains3, chains4, chains5;
+        //string ex1 = "Задача 1\n", ex2 = "Задача 2", ex3 = "Задача 3",
+        //    ex4 = "Задача 4", ex5 = "Задача 5", br = "<br>", hr = "<hr>",
+        //    pex1, pex2, pex3, pex4, pex5,
+        //    aex1, aex2, aex3, aex4, aex5, try1, zam = "Заметки: ", answ = "Ответ: ", zad = "Условие: ";
+        //int r = 0, gr = 0, b = 0;
+
+        private int _exerciseNumber;//Номер текущего вопроса
+        private int _bad;//Количество неправильных ответов
+        private int _good;//Количество правильных ответов
+        private readonly List<Result> _results = new List<Result>();
+        private readonly Excercises _excercises;
+
         public Practics()
         {
             InitializeComponent();
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            WindowState = FormWindowState.Maximized;
+            FormBorderStyle = FormBorderStyle.None;
             using (var reader = new StreamReader(Program.Adress))
             {
                 var serializer = new XmlSerializer(typeof(Excercises));
@@ -66,7 +77,7 @@ namespace MeshAnalysis
             sketchControl1.StartNewSketch();
             //casesControl1.isSel = 0;
             notesTextBox.Clear();
-            //chains = 0;
+            
         }
 
         //Первая задача
@@ -74,7 +85,7 @@ namespace MeshAnalysis
         {
             _exerciseNumber = 0;
             NewExercise();
-            //chains = 0;
+            
             tableLayoutPanel1.Enabled = true;
         }
 
@@ -83,7 +94,7 @@ namespace MeshAnalysis
         {
             _exerciseNumber = 1;
             NewExercise();
-            //chains = 0;
+            
             tableLayoutPanel1.Enabled = true;
         }
 
@@ -92,7 +103,7 @@ namespace MeshAnalysis
         {
             _exerciseNumber = 2;
             NewExercise();
-            //chains = 0;
+            
             tableLayoutPanel1.Enabled = true;
         }
 
@@ -101,7 +112,7 @@ namespace MeshAnalysis
         {
             _exerciseNumber = 3;
             NewExercise();
-            //chains = 0;
+            
             tableLayoutPanel1.Enabled = true;
         }
 
@@ -110,13 +121,9 @@ namespace MeshAnalysis
         {
             _exerciseNumber = 4;
             NewExercise();
-            //chains = 0;
+            
             tableLayoutPanel1.Enabled = true;
         }
-
-        private int _exerciseNumber;
-        private int _bad;
-        private int _good;
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -131,20 +138,6 @@ namespace MeshAnalysis
             using (Theory newForm = new Theory())
             {
                 newForm.ShowDialog();
-            }
-        }
-
-        private void casesControl1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private string ImageToBase64(Image image)
-        {
-            using (var ms = new MemoryStream())
-            {
-                image.Save(ms, ImageFormat.Jpeg);
-                return Convert.ToBase64String(ms.ToArray());
             }
         }
 
@@ -178,7 +171,7 @@ namespace MeshAnalysis
             //            ex2Button.PerformClick();
             //            good++;
             //            //ex1 = textBox1.Text;
-            //            //chains = 0;
+            //            
             //        }
             //        else if (chains1 == 3)
             //        {
@@ -192,7 +185,7 @@ namespace MeshAnalysis
             //            //MessageBox.Show(this, "НЕПРАВИЛЬНО!");
             //            ex2Button.PerformClick();
             //            //ex1 = textBox1.Text;
-            //            //chains = 0;
+            //            
             //        }
             //        else MessageBox.Show(casesControl1.GetAnswers());
             //        break;
@@ -212,7 +205,7 @@ namespace MeshAnalysis
             //            ex3Button.PerformClick();
             //            good++;
             //            //ex2 = textBox1.Text;
-            //            //chains = 0;
+            //            
             //        }
             //        else if (chains2 == 3)
             //        {
@@ -225,7 +218,7 @@ namespace MeshAnalysis
             //            allex++;
             //            ex3Button.PerformClick();
             //            //ex2 = textBox1.Text;
-            //            //chains = 0;
+            //            
             //        }
             //        else MessageBox.Show(casesControl1.GetAnswers());
             //        break;
@@ -245,7 +238,7 @@ namespace MeshAnalysis
             //            ex4Button.PerformClick();
             //            good++;
             //            //ex3 = textBox1.Text;
-            //            //chains = 0;
+            //            
             //        }
             //        else if (chains3 == 3)
             //        {
@@ -258,7 +251,7 @@ namespace MeshAnalysis
             //            allex++;
             //            ex4Button.PerformClick();
             //            //ex3 = textBox1.Text;
-            //            //chains = 0;
+            //            
             //        }
             //        else MessageBox.Show(casesControl1.GetAnswers());
             //        break;
@@ -278,7 +271,7 @@ namespace MeshAnalysis
             //            ex5Button.PerformClick();
             //            good++;
             //            //ex4 = textBox1.Text;
-            //            //chains = 0;
+            //            
             //        }
             //        else if (chains4 == 3)
             //        {
@@ -291,7 +284,7 @@ namespace MeshAnalysis
             //            allex++;
             //            ex5Button.PerformClick();
             //            //ex4 = textBox1.Text;
-            //            //chains = 0;
+            //            
             //        }
             //        else MessageBox.Show(casesControl1.GetAnswers());
             //        break;
@@ -311,7 +304,7 @@ namespace MeshAnalysis
             //            ex1Button.PerformClick();
             //            good++;
             //            //ex5 = textBox1.Text;
-            //            //chains = 0;
+            //            
             //        }
             //        else if (chains5 == 3)
             //        {
@@ -324,7 +317,7 @@ namespace MeshAnalysis
             //            allex++;
             //            ex1Button.PerformClick();
             //            //ex5 = textBox1.Text;
-            //            //chains = 0;
+            //            
             //        }
             //        else MessageBox.Show(casesControl1.GetAnswers());
             //        break;
@@ -377,24 +370,13 @@ namespace MeshAnalysis
             }
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private List<Result> _results = new List<Result>();
         private void Save()
         {
             using (SaveFileDialog saveFile1 = new SaveFileDialog())
             {
                 saveFile1.DefaultExt = "*.html";
                 saveFile1.Filter = "html|*.html";
-                if (saveFile1.ShowDialog() != System.Windows.Forms.DialogResult.OK
+                if (saveFile1.ShowDialog() != DialogResult.OK
                     || saveFile1.FileName.Length == 0) return;
                 using (StreamWriter sw = new StreamWriter(saveFile1.FileName, false, Encoding.UTF8))
                 {
@@ -477,69 +459,69 @@ namespace MeshAnalysis
                 }
             }
         }
-        void Save_File()
-        {
-            try
-            {
-                StreamWriter writer = new StreamWriter(saveFileDialog1.FileName, false, Encoding.UTF8);
-                writer.Write(zad);
-                writer.Write(ex1);
-                writer.Write(br);
-                writer.Write(answ);
-                writer.Write(aex1);
-                writer.Write(br);
-                writer.Write(zam);
-                writer.Write(pex1);
-                writer.Write(br);
-                writer.Write(hr);
-                writer.Write(zad);
-                writer.Write(ex2);
-                writer.Write(br);
-                writer.Write(answ);
-                writer.Write(aex2);
-                writer.Write(br);
-                writer.Write(zam);
-                writer.Write(pex2);
-                writer.Write(br);
-                writer.Write(hr);
-                writer.Write(zad);
-                writer.Write(ex3);
-                writer.Write(br);
-                writer.Write(answ);
-                writer.Write(aex3);
-                writer.Write(br);
-                writer.Write(zam);
-                writer.Write(pex3);
-                writer.Write(br);
-                writer.Write(hr);
-                writer.Write(zad);
-                writer.Write(ex4);
-                writer.Write(br);
-                writer.Write(answ);
-                writer.Write(aex4);
-                writer.Write(br);
-                writer.Write(zam);
-                writer.Write(pex4);
-                writer.Write(br);
-                writer.Write(hr);
-                writer.Write(zad);
-                writer.Write(ex5);
-                writer.Write(br);
-                writer.Write(answ);
-                writer.Write(aex5);
-                writer.Write(br);
-                writer.Write(zam);
-                writer.Write(pex5);
-                writer.Write(br);
-                writer.Write(hr);
-                writer.Close();
-                //textBox1.Modified = false;
+        //void Save_File()
+        //{
+        //    try
+        //    {
+        //        StreamWriter writer = new StreamWriter(saveFileDialog1.FileName, false, Encoding.UTF8);
+        //        writer.Write(zad);
+        //        writer.Write(ex1);
+        //        writer.Write(br);
+        //        writer.Write(answ);
+        //        writer.Write(aex1);
+        //        writer.Write(br);
+        //        writer.Write(zam);
+        //        writer.Write(pex1);
+        //        writer.Write(br);
+        //        writer.Write(hr);
+        //        writer.Write(zad);
+        //        writer.Write(ex2);
+        //        writer.Write(br);
+        //        writer.Write(answ);
+        //        writer.Write(aex2);
+        //        writer.Write(br);
+        //        writer.Write(zam);
+        //        writer.Write(pex2);
+        //        writer.Write(br);
+        //        writer.Write(hr);
+        //        writer.Write(zad);
+        //        writer.Write(ex3);
+        //        writer.Write(br);
+        //        writer.Write(answ);
+        //        writer.Write(aex3);
+        //        writer.Write(br);
+        //        writer.Write(zam);
+        //        writer.Write(pex3);
+        //        writer.Write(br);
+        //        writer.Write(hr);
+        //        writer.Write(zad);
+        //        writer.Write(ex4);
+        //        writer.Write(br);
+        //        writer.Write(answ);
+        //        writer.Write(aex4);
+        //        writer.Write(br);
+        //        writer.Write(zam);
+        //        writer.Write(pex4);
+        //        writer.Write(br);
+        //        writer.Write(hr);
+        //        writer.Write(zad);
+        //        writer.Write(ex5);
+        //        writer.Write(br);
+        //        writer.Write(answ);
+        //        writer.Write(aex5);
+        //        writer.Write(br);
+        //        writer.Write(zam);
+        //        writer.Write(pex5);
+        //        writer.Write(br);
+        //        writer.Write(hr);
+        //        writer.Close();
+        //        //textBox1.Modified = false;
 
-            }
-            catch (Exception error)
-            {
-                MessageBox.Show(error.Message, "Ошибка сохранения", MessageBoxButtons.OK);
-            }
-        }
+        //    }
+        //    catch (Exception error)
+        //    {
+        //        MessageBox.Show(error.Message, "Ошибка сохранения", MessageBoxButtons.OK);
+        //    }
+        //}
     }
 }

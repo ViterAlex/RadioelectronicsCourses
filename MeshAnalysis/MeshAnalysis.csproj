@@ -61,6 +61,9 @@
     <Compile Include="Controls\CasesControl.Designer.cs">
       <DependentUpon>CasesControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Helper.cs" />
+    <Compile Include="Controls\FigureKind.cs" />
+    <Compile Include="Controls\Params.cs" />
     <Compile Include="Controls\SketchControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -513,6 +516,9 @@
     <None Include="TheoryFiles\MeCuMe\MeCuMe.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

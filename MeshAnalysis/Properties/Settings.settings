@@ -1,7 +1,21 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="MeshAnalysis.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ButtonBackColor" Type="System.Drawing.Color" Scope="Application">
+      <Value Profile="(Default)">102, 204, 153</Value>
+    </Setting>
+    <Setting Name="ButtonForeColor" Type="System.Drawing.Color" Scope="Application">
+      <Value Profile="(Default)">17, 34, 51</Value>
+    </Setting>
+    <Setting Name="ButtonFlatStyle" Type="System.Windows.Forms.FlatStyle" Scope="Application">
+      <Value Profile="(Default)">Flat</Value>
+    </Setting>
+    <Setting Name="NavButtonBackground" Type="System.Drawing.Color" Scope="Application">
+      <Value Profile="(Default)">68, 187, 255</Value>
+    </Setting>
+    <Setting Name="NavButtonFont" Type="System.Drawing.Font" Scope="Application">
+      <Value Profile="(Default)">Microsoft Sans Serif, 10pt</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

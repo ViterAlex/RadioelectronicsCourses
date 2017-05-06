@@ -5,6 +5,9 @@ using System.Xml.Linq;
 
 namespace MeshAnalysis
 {
+    /// <summary>
+    /// Форма со всей теорией
+    /// </summary>
     public partial class Theory : Form
     {
         public Theory()

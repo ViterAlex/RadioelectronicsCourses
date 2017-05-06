@@ -36,11 +36,11 @@
             // theoryButton
             // 
             this.theoryButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.theoryButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(204)))), ((int)(((byte)(153)))));
+            this.theoryButton.BackColor = global::MeshAnalysis.Properties.Settings.Default.ButtonBackColor;
             this.theoryButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(34)))), ((int)(((byte)(51)))));
             this.theoryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.theoryButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.theoryButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(34)))), ((int)(((byte)(51)))));
+            this.theoryButton.ForeColor = global::MeshAnalysis.Properties.Settings.Default.ButtonForeColor;
             this.theoryButton.Location = new System.Drawing.Point(193, 86);
             this.theoryButton.Name = "theoryButton";
             this.theoryButton.Size = new System.Drawing.Size(291, 57);
@@ -53,12 +53,12 @@
             // 
             this.practiceButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.practiceButton.AutoEllipsis = true;
-            this.practiceButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(204)))), ((int)(((byte)(153)))));
+            this.practiceButton.BackColor = global::MeshAnalysis.Properties.Settings.Default.ButtonBackColor;
             this.practiceButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(34)))), ((int)(((byte)(51)))));
             this.practiceButton.FlatAppearance.BorderSize = 2;
             this.practiceButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.practiceButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.practiceButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(34)))), ((int)(((byte)(51)))));
+            this.practiceButton.ForeColor = global::MeshAnalysis.Properties.Settings.Default.ButtonForeColor;
             this.practiceButton.Location = new System.Drawing.Point(193, 165);
             this.practiceButton.Margin = new System.Windows.Forms.Padding(0);
             this.practiceButton.Name = "practiceButton";
@@ -72,12 +72,12 @@
             // 
             this.allButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.allButton.AutoEllipsis = true;
-            this.allButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(204)))), ((int)(((byte)(153)))));
+            this.allButton.BackColor = global::MeshAnalysis.Properties.Settings.Default.ButtonBackColor;
             this.allButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(34)))), ((int)(((byte)(51)))));
             this.allButton.FlatAppearance.BorderSize = 2;
-            this.allButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.allButton.FlatStyle = global::MeshAnalysis.Properties.Settings.Default.ButtonFlatStyle;
             this.allButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.allButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(34)))), ((int)(((byte)(51)))));
+            this.allButton.ForeColor = global::MeshAnalysis.Properties.Settings.Default.ButtonForeColor;
             this.allButton.Location = new System.Drawing.Point(193, 244);
             this.allButton.Margin = new System.Windows.Forms.Padding(0);
             this.allButton.Name = "allButton";

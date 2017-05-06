@@ -2,6 +2,9 @@
 
 namespace MeshAnalysis
 {
+    /// <summary>
+    /// Форма с теорией по заданной теме
+    /// </summary>
     public partial class TopicTheory : Form
     {
         public TopicTheory()

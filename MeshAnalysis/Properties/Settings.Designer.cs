@@ -22,5 +22,50 @@ namespace MeshAnalysis.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("102, 204, 153")]
+        public global::System.Drawing.Color ButtonBackColor {
+            get {
+                return ((global::System.Drawing.Color)(this["ButtonBackColor"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("17, 34, 51")]
+        public global::System.Drawing.Color ButtonForeColor {
+            get {
+                return ((global::System.Drawing.Color)(this["ButtonForeColor"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Flat")]
+        public global::System.Windows.Forms.FlatStyle ButtonFlatStyle {
+            get {
+                return ((global::System.Windows.Forms.FlatStyle)(this["ButtonFlatStyle"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("68, 187, 255")]
+        public global::System.Drawing.Color NavButtonBackground {
+            get {
+                return ((global::System.Drawing.Color)(this["NavButtonBackground"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Microsoft Sans Serif, 10pt")]
+        public global::System.Drawing.Font NavButtonFont {
+            get {
+                return ((global::System.Drawing.Font)(this["NavButtonFont"]));
+            }
+        }
     }
 }

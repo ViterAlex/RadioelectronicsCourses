@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using MeshAnalysis.Properties;
 
 namespace MeshAnalysis
 {
@@ -14,9 +15,9 @@ namespace MeshAnalysis
             return new Button
                    {
                        Anchor = AnchorStyles.None,
-                       BackColor = Color.FromArgb(68, 187, 255),
+                       BackColor = Settings.Default.NavButtonBackground,
                        Size = new Size(250, 50),
-                       Font = new Font(font.FontFamily, 10, GraphicsUnit.Point),
+                       Font = Settings.Default.NavButtonFont,
                        FlatStyle = FlatStyle.Flat,
                        FlatAppearance =
                        {
