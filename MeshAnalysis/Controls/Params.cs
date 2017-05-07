@@ -7,10 +7,11 @@ namespace MeshAnalysis.Controls
     /// <summary>
     /// Параметры фигуры
     /// </summary>
-    internal class Params : IDisposable
+    public class Params : IDisposable
     {
         public GraphicsPath Path;
         public Pen Pen;
+        public Brush Brush;
 
         #region IDisposable
 

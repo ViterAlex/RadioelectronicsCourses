@@ -2,14 +2,24 @@ using System.ComponentModel;
 
 namespace MeshAnalysis.Controls
 {
-    internal enum FigureKind
+    public enum FigureKind
     {
         None,
-        [Description("Окружность")]
-        Circle,
+        [Description("Эллипс")]
+        Ellipse,
         [Description("Прямоугольник")]
         Rectangle,
         [Description("Прямая")]
         Line
+    }
+
+    public enum DrawMode
+    {
+        [Description("Только контур")]
+        StrokeOnly,
+        [Description("Только заливка")]
+        FillOnly,
+        [Description("Заливка и контур")]
+        StrokeAndFill
     }
 }

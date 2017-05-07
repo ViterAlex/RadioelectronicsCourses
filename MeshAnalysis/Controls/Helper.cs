@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace MeshAnalysis.Controls
@@ -9,7 +10,7 @@ namespace MeshAnalysis.Controls
     public static class Helper
     {
         private static readonly Pen _pen = new Pen(Color.Black);
-
+        private static readonly SolidBrush _brush = new SolidBrush(Color.White);
         /// <summary>
         /// Сплошное перо определённого цвета
         /// </summary>
@@ -33,6 +34,38 @@ namespace MeshAnalysis.Controls
             _pen.Width = 2.0f;
             _pen.DashStyle = DashStyle.Dash;
             return _pen;
+        }
+
+        /// <summary>
+        /// Кисть определённого цвета
+        /// </summary>
+        /// <param name="color">Цвет кисти</param>
+        /// <returns></returns>
+        public static SolidBrush Brush(this Color color)
+        {
+            _brush.Color = color;
+            return _brush;
+        }
+
+        /// <summary>
+        /// Полупрозрачная кисть определённого цвета
+        /// </summary>
+        /// <param name="color">Цвет кисти</param>
+        /// <returns></returns>
+        public static SolidBrush SemitransparentBrush(this Color color)
+        {
+            _brush.Color = Color.FromArgb(128, color);
+            return _brush;
+        }
+
+        public static SolidBrush CloneTool(this SolidBrush brush)
+        {
+            return (SolidBrush)brush.Clone();
+        }
+
+        public static Pen CloneTool(this Pen pen)
+        {
+            return (Pen)pen.Clone();
         }
 
         /// <summary>

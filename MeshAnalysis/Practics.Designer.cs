@@ -41,6 +41,7 @@ namespace MeshAnalysis
             this.ex3Button = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.casesControl1 = new MeshAnalysis.Controls.CasesControl();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.answerButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -51,7 +52,6 @@ namespace MeshAnalysis
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.sketchControl1 = new MeshAnalysis.Controls.SketchControl();
             this.calcControl1 = new MeshAnalysis.Controls.CalcControl();
-            this.casesControl1 = new MeshAnalysis.Controls.CasesControl();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -233,7 +233,7 @@ namespace MeshAnalysis
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 121F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(753, 579);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(621, 579);
             this.tableLayoutPanel1.TabIndex = 6;
             // 
             // pictureBox1
@@ -242,10 +242,24 @@ namespace MeshAnalysis
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Location = new System.Drawing.Point(3, 29);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(747, 135);
+            this.pictureBox1.Size = new System.Drawing.Size(615, 135);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
+            // 
+            // casesControl1
+            // 
+            this.casesControl1.AutoScroll = true;
+            this.casesControl1.AutoSize = true;
+            this.casesControl1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tableLayoutPanel1.SetColumnSpan(this.casesControl1, 2);
+            this.casesControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.casesControl1.Location = new System.Drawing.Point(3, 170);
+            this.casesControl1.MinimumSize = new System.Drawing.Size(150, 40);
+            this.casesControl1.Name = "casesControl1";
+            this.casesControl1.SelectedCaseId = ((byte)(0));
+            this.casesControl1.Size = new System.Drawing.Size(615, 248);
+            this.casesControl1.TabIndex = 4;
             // 
             // textBox1
             // 
@@ -256,7 +270,7 @@ namespace MeshAnalysis
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(747, 20);
+            this.textBox1.Size = new System.Drawing.Size(615, 20);
             this.textBox1.TabIndex = 6;
             // 
             // answerButton
@@ -268,7 +282,7 @@ namespace MeshAnalysis
             this.answerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.answerButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.answerButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(34)))), ((int)(((byte)(51)))));
-            this.answerButton.Location = new System.Drawing.Point(328, 545);
+            this.answerButton.Location = new System.Drawing.Point(262, 545);
             this.answerButton.Name = "answerButton";
             this.answerButton.Size = new System.Drawing.Size(96, 30);
             this.answerButton.TabIndex = 7;
@@ -288,7 +302,7 @@ namespace MeshAnalysis
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(747, 115);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(615, 115);
             this.tableLayoutPanel2.TabIndex = 8;
             // 
             // notesTextBox
@@ -299,7 +313,7 @@ namespace MeshAnalysis
             this.notesTextBox.Location = new System.Drawing.Point(3, 20);
             this.notesTextBox.Multiline = true;
             this.notesTextBox.Name = "notesTextBox";
-            this.notesTextBox.Size = new System.Drawing.Size(741, 92);
+            this.notesTextBox.Size = new System.Drawing.Size(609, 92);
             this.notesTextBox.TabIndex = 8;
             // 
             // label1
@@ -326,7 +340,7 @@ namespace MeshAnalysis
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel1);
             this.splitContainer1.Size = new System.Drawing.Size(1135, 579);
-            this.splitContainer1.SplitterDistance = 378;
+            this.splitContainer1.SplitterDistance = 510;
             this.splitContainer1.TabIndex = 9;
             // 
             // splitContainer2
@@ -344,7 +358,7 @@ namespace MeshAnalysis
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.calcControl1);
-            this.splitContainer2.Size = new System.Drawing.Size(378, 579);
+            this.splitContainer2.Size = new System.Drawing.Size(510, 579);
             this.splitContainer2.SplitterDistance = 316;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -353,7 +367,7 @@ namespace MeshAnalysis
             this.sketchControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.sketchControl1.Location = new System.Drawing.Point(0, 0);
             this.sketchControl1.Name = "sketchControl1";
-            this.sketchControl1.Size = new System.Drawing.Size(378, 316);
+            this.sketchControl1.Size = new System.Drawing.Size(510, 316);
             this.sketchControl1.TabIndex = 8;
             // 
             // calcControl1
@@ -363,20 +377,6 @@ namespace MeshAnalysis
             this.calcControl1.Name = "calcControl1";
             this.calcControl1.Size = new System.Drawing.Size(254, 259);
             this.calcControl1.TabIndex = 7;
-            // 
-            // casesControl1
-            // 
-            this.casesControl1.AutoScroll = true;
-            this.casesControl1.AutoSize = true;
-            this.casesControl1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tableLayoutPanel1.SetColumnSpan(this.casesControl1, 2);
-            this.casesControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.casesControl1.Location = new System.Drawing.Point(3, 170);
-            this.casesControl1.MinimumSize = new System.Drawing.Size(150, 40);
-            this.casesControl1.Name = "casesControl1";
-            this.casesControl1.SelectedCaseId = ((byte)(0));
-            this.casesControl1.Size = new System.Drawing.Size(747, 248);
-            this.casesControl1.TabIndex = 4;
             // 
             // Practics
             // 

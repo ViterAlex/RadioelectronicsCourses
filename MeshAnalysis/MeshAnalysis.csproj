@@ -61,6 +61,12 @@
     <Compile Include="Controls\CasesControl.Designer.cs">
       <DependentUpon>CasesControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ColorSelectControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ColorSelectControl.Designer.cs">
+      <DependentUpon>ColorSelectControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Helper.cs" />
     <Compile Include="Controls\FigureKind.cs" />
     <Compile Include="Controls\Params.cs" />
@@ -119,6 +125,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\CasesControl.resx">
       <DependentUpon>CasesControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ColorSelectControl.resx">
+      <DependentUpon>ColorSelectControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\SketchControl.resx">
       <DependentUpon>SketchControl.cs</DependentUpon>
@@ -518,7 +527,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\" />
+    <None Include="Resources\Redo_grey_48x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Undo_grey_48x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
