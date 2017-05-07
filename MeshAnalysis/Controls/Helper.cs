@@ -40,7 +40,6 @@ namespace MeshAnalysis.Controls
         /// Кисть определённого цвета
         /// </summary>
         /// <param name="color">Цвет кисти</param>
-        /// <returns></returns>
         public static SolidBrush Brush(this Color color)
         {
             _brush.Color = color;
@@ -51,7 +50,6 @@ namespace MeshAnalysis.Controls
         /// Полупрозрачная кисть определённого цвета
         /// </summary>
         /// <param name="color">Цвет кисти</param>
-        /// <returns></returns>
         public static SolidBrush SemitransparentBrush(this Color color)
         {
             _brush.Color = Color.FromArgb(128, color);
@@ -110,7 +108,7 @@ namespace MeshAnalysis.Controls
         /// <typeparam name="T">The type of the attribute you want to retrieve</typeparam>
         /// <param name="enumVal">The enum value</param>
         /// <returns>The attribute of type T that exists on the enum value</returns>
-        public static T GetAttributeOfType<T>(this Enum enumVal) where T : System.Attribute
+        public static T GetAttribute<T>(this Enum enumVal) where T : Attribute
         {
             var type = enumVal.GetType();
             var memInfo = type.GetMember(enumVal.ToString());

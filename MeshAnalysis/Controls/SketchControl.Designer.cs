@@ -32,17 +32,17 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.sketchPanel = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.colorSelectControl1 = new MeshAnalysis.Controls.ColorSelectControl();
             this.penWidthNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.figuresToolStrip = new System.Windows.Forms.ToolStrip();
             this.modeSelector = new System.Windows.Forms.ToolStripComboBox();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.clearButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.undoButton = new System.Windows.Forms.ToolStripButton();
             this.redoButton = new System.Windows.Forms.ToolStripButton();
-            this.colorSelectControl1 = new MeshAnalysis.Controls.ColorSelectControl();
+            this.undoButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.clearButton = new System.Windows.Forms.ToolStripButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.penWidthNumericUpDown)).BeginInit();
@@ -92,6 +92,16 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(320, 60);
             this.flowLayoutPanel1.TabIndex = 9;
             // 
+            // colorSelectControl1
+            // 
+            this.colorSelectControl1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.colorSelectControl1.FillColor = System.Drawing.Color.Orange;
+            this.colorSelectControl1.Location = new System.Drawing.Point(3, 3);
+            this.colorSelectControl1.Name = "colorSelectControl1";
+            this.colorSelectControl1.Size = new System.Drawing.Size(49, 46);
+            this.colorSelectControl1.StrokeColor = System.Drawing.Color.Black;
+            this.colorSelectControl1.TabIndex = 0;
+            // 
             // penWidthNumericUpDown
             // 
             this.penWidthNumericUpDown.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -120,6 +130,7 @@
             0,
             0,
             0});
+            this.penWidthNumericUpDown.ValueChanged += new System.EventHandler(this.penWidthNumericUpDown_ValueChanged);
             // 
             // tableLayoutPanel2
             // 
@@ -180,22 +191,16 @@
             this.toolStripLabel1.Size = new System.Drawing.Size(81, 22);
             this.toolStripLabel1.Text = "Размер кисти";
             // 
-            // clearButton
+            // redoButton
             // 
-            this.clearButton.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.clearButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.clearButton.Image = ((System.Drawing.Image)(resources.GetObject("clearButton.Image")));
-            this.clearButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(63, 22);
-            this.clearButton.Text = "Очистить";
-            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            this.redoButton.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.redoButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.redoButton.Image = global::MeshAnalysis.Properties.Resources.Redo;
+            this.redoButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.redoButton.Name = "redoButton";
+            this.redoButton.Size = new System.Drawing.Size(23, 22);
+            this.redoButton.Text = "Повторить";
+            this.redoButton.Click += new System.EventHandler(this.redoButton_Click);
             // 
             // undoButton
             // 
@@ -208,26 +213,22 @@
             this.undoButton.Text = "Отменить";
             this.undoButton.Click += new System.EventHandler(this.undoButton_Click);
             // 
-            // redoButton
+            // toolStripSeparator1
             // 
-            this.redoButton.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.redoButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.redoButton.Image = global::MeshAnalysis.Properties.Resources.Redo;
-            this.redoButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.redoButton.Name = "redoButton";
-            this.redoButton.Size = new System.Drawing.Size(23, 22);
-            this.redoButton.Text = "Повторить";
-            this.redoButton.Click += new System.EventHandler(this.redoButton_Click);
+            this.toolStripSeparator1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
-            // colorSelectControl1
+            // clearButton
             // 
-            this.colorSelectControl1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.colorSelectControl1.FillColor = System.Drawing.Color.Orange;
-            this.colorSelectControl1.Location = new System.Drawing.Point(3, 3);
-            this.colorSelectControl1.Name = "colorSelectControl1";
-            this.colorSelectControl1.Size = new System.Drawing.Size(49, 46);
-            this.colorSelectControl1.StrokeColor = System.Drawing.Color.Black;
-            this.colorSelectControl1.TabIndex = 0;
+            this.clearButton.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.clearButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.clearButton.Image = ((System.Drawing.Image)(resources.GetObject("clearButton.Image")));
+            this.clearButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(63, 22);
+            this.clearButton.Text = "Очистить";
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
             // SketchControl
             // 

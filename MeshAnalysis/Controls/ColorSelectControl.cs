@@ -84,8 +84,7 @@ namespace MeshAnalysis.Controls
         public event EventHandler FillColorChanged;
         public event EventHandler StrokeColorChanged;
 
-        #region Overrides of UserControl
-
+        #region Overrides
         protected override Size DefaultSize
         {
             get
@@ -93,10 +92,6 @@ namespace MeshAnalysis.Controls
                 return _defaultSize;
             }
         }
-
-        #endregion
-
-        #region Overrides of Control
 
         protected override void OnHandleCreated(EventArgs e)
         {
@@ -151,6 +146,7 @@ namespace MeshAnalysis.Controls
             using (var dialog = new ColorDialog())
             {
                 dialog.Color = index == 0 ? FillColor : StrokeColor;
+                dialog.SolidColorOnly = false;
                 if (dialog.ShowDialog(this) != DialogResult.OK)
                 {
                     return;

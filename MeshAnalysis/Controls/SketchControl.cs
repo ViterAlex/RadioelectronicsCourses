@@ -20,6 +20,10 @@ namespace MeshAnalysis.Controls
         private Point _startPoint;
         private bool _isPressed;
         /// <summary>
+        /// Ширина пера
+        /// </summary>
+        private float _penWidth;
+        /// <summary>
         /// Тип фигуры: Окружность, Прямоугольник, Линия
         /// </summary>
         private FigureKind _figure;
@@ -51,6 +55,26 @@ namespace MeshAnalysis.Controls
                 return param == null ? null : GetPaintMethod(param);
             }
         }
+
+        /// <summary>
+        /// Тип фигуры: Окружность, Прямоугольник, Линия
+        /// </summary>
+        public FigureKind Figure
+        {
+            get
+            {
+                return _figure;
+            }
+            set
+            {
+                _figure = value;
+                if (_figure == FigureKind.None)
+                {
+                    UncheckButtons();
+                }
+            }
+        }
+
         #endregion
 
         public SketchControl()
@@ -130,6 +154,11 @@ namespace MeshAnalysis.Controls
             Invalidate(true);
         }
 
+        private void penWidthNumericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            _penWidth = (float)penWidthNumericUpDown.Value;
+            Invalidate(true);
+        }
         #endregion
 
         #region Методы
@@ -167,13 +196,13 @@ namespace MeshAnalysis.Controls
                     if (!btn.Checked)
                     {
                         //Если кнопка отжата, то убираем фигуру
-                        _figure = FigureKind.None;
+                        Figure = FigureKind.None;
                         return;
                     }
-                    _figure = value;
+                    Figure = value;
                 };
                 //Текст кнопки получаем из атрибута Description
-                btn.Text = value.GetAttributeOfType<DescriptionAttribute>().Description;
+                btn.Text = value.GetAttribute<DescriptionAttribute>().Description;
                 figuresToolStrip.Items.Insert(0, btn);
             }
         }
@@ -188,7 +217,7 @@ namespace MeshAnalysis.Controls
             flowLayoutPanel1.Controls.Remove(penWidthNumericUpDown);
             tableLayoutPanel1.Controls.Remove(flowLayoutPanel1);
             flowLayoutPanel1.Dispose();
-            //Удаляем лишние строки.
+            //Удаляем лишние строки из таблицы
             tableLayoutPanel1.RowStyles.RemoveAt(1);
 
         }
@@ -198,7 +227,7 @@ namespace MeshAnalysis.Controls
             var type = typeof(DrawMode);
             foreach (DrawMode value in Enum.GetValues(type))
             {
-                modeSelector.Items.Add(value.GetAttributeOfType<DescriptionAttribute>().Description);
+                modeSelector.Items.Add(value.GetAttribute<DescriptionAttribute>().Description);
             }
             modeSelector.SelectedIndex = (int)_drawMode;
         }
@@ -219,7 +248,7 @@ namespace MeshAnalysis.Controls
         private Params GetParams(SolidBrush brush, Pen pen)
         {
             var path = new GraphicsPath();
-            switch (_figure)
+            switch (Figure)
             {
                 case FigureKind.Ellipse:
                     path.AddEllipse(_startPoint.GetRectangle(_endPoint, IsEqual));
@@ -251,7 +280,7 @@ namespace MeshAnalysis.Controls
         private Action<Graphics> GetPaintMethod(Params param)
         {
             Action<Graphics> action = g => { g.DrawPath(param.Pen, param.Path); };
-            if (_figure == FigureKind.Line)
+            if (Figure == FigureKind.Line)
             {
                 return action;
             }
@@ -277,7 +306,7 @@ namespace MeshAnalysis.Controls
         private void AddAction()
         {
             _redo.Clear();
-            var param = GetParams(_fillColor.Brush(), _strokeColor.Pen((float)penWidthNumericUpDown.Value));
+            var param = GetParams(_fillColor.Brush(), _strokeColor.Pen(_penWidth));
             if (param == null)
             {
                 return;
@@ -290,8 +319,9 @@ namespace MeshAnalysis.Controls
         /// </summary>
         public void StartNewSketch()
         {
-            _figure = FigureKind.None;
+            Figure = FigureKind.None;
             _actions.Clear();
+            _redo.Clear();
             sketchPanel.Invalidate();
         }
 
@@ -299,12 +329,16 @@ namespace MeshAnalysis.Controls
         /// Отжимание всех кнопок кроме заданной
         /// </summary>
         /// <param name="button">Кнопка, которую оставить нажатой</param>
-        private static void UncheckButtons(ToolStripItem button)
+        private void UncheckButtons(ToolStripItem button = null)
         {
-            var toolStripButtons = button
-                .GetCurrentParent()
-                .Items.OfType<ToolStripButton>()
-                .Where(b => b.CheckOnClick && !b.Equals(button));
+            var toolStripButtons = button != null
+                ? button.GetCurrentParent()
+                        .Items.OfType<ToolStripButton>()
+                        .Where(b => b.CheckOnClick && !b.Equals(button))
+                : figuresToolStrip.Items
+                                  .OfType<ToolStripButton>()
+                                  .Where(b => b.CheckOnClick);
+
             foreach (var btn in toolStripButtons)
                 btn.Checked = false;
         }
