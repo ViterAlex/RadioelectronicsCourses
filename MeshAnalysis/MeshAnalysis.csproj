@@ -69,6 +69,7 @@
     </Compile>
     <Compile Include="Controls\Helper.cs" />
     <Compile Include="Controls\FigureKind.cs" />
+    <Compile Include="Controls\ImageAttribute.cs" />
     <Compile Include="Controls\Params.cs" />
     <Compile Include="Controls\SketchControl.cs">
       <SubType>UserControl</SubType>
@@ -531,6 +532,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Undo_grey_48x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EllipseToolIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RectangleToolIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ShapeBothIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ShapeInteriorIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ShapeOutlineIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SwapIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LineToolIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

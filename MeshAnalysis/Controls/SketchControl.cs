@@ -75,6 +75,36 @@ namespace MeshAnalysis.Controls
             }
         }
 
+        /// <summary>
+        /// Режим рисования: Только контур, Только заливка, Контур и заливка
+        /// </summary>
+        private DrawMode Mode
+        {
+            get
+            {
+                return _drawMode;
+            }
+            set
+            {
+                _drawMode = value;
+                switch (_drawMode)
+                {
+                    case DrawMode.StrokeOnly:
+                        strokeAndFillButton.Checked = false;
+                        fillOnlyButton.Checked = false;
+                        break;
+                    case DrawMode.FillOnly:
+                        strokeAndFillButton.Checked = false;
+                        strokeOnlyButton.Checked = false;
+                        break;
+                    case DrawMode.StrokeAndFill:
+                        strokeOnlyButton.Checked = false;
+                        fillOnlyButton.Checked = false;
+                        break;
+                }
+            }
+        }
+
         #endregion
 
         public SketchControl()
@@ -85,22 +115,15 @@ namespace MeshAnalysis.Controls
             {
                 StartNewSketch();
                 CreateButtons();
-                AddModeSelectorItems();
                 AddToolstripItems();
-                _fillColor = colorSelectControl1.FillColor;
-                _strokeColor = colorSelectControl1.StrokeColor;
-                colorSelectControl1.FillColorChanged += (_, __) => _fillColor = colorSelectControl1.FillColor;
-                colorSelectControl1.StrokeColorChanged += (_, __) => _strokeColor = colorSelectControl1.StrokeColor;
+                _fillColor = colorSelectControl1.Fill;
+                _strokeColor = colorSelectControl1.Stroke;
+                colorSelectControl1.FillColorChanged += (_, __) => _fillColor = colorSelectControl1.Fill;
+                colorSelectControl1.StrokeColorChanged += (_, __) => _strokeColor = colorSelectControl1.Stroke;
             };
-
         }
 
         #region Обработчики событий
-        private void modeSelector_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            _drawMode = (DrawMode)modeSelector.SelectedIndex;
-        }
-
         private void clearButton_Click(object sender, EventArgs e)
         {
             StartNewSketch();
@@ -110,6 +133,10 @@ namespace MeshAnalysis.Controls
         {
             _startPoint = e.Location;
             _isPressed = true;
+            if (e.Button == MouseButtons.Right)
+            {
+                SwapColors();
+            }
         }
 
         private void sketchPanel_MouseMove(object sender, MouseEventArgs e)
@@ -123,12 +150,17 @@ namespace MeshAnalysis.Controls
 
         private void sketchPanel_MouseUp(object sender, MouseEventArgs e)
         {
-            if (_isPressed)
+            if (_isPressed && _endPoint != Point.Empty)
             {
                 AddAction();
                 sketchPanel.Invalidate();
             }
+            if (e.Button == MouseButtons.Right)
+            {
+                SwapColors();
+            }
             _isPressed = false;
+            _endPoint = Point.Empty;
         }
 
         private void sketchPanel_Paint(object sender, PaintEventArgs e)
@@ -162,6 +194,13 @@ namespace MeshAnalysis.Controls
         #endregion
 
         #region Методы
+        private void SwapColors()
+        {
+            var temp = _fillColor;
+            _fillColor = _strokeColor;
+            _strokeColor = temp;
+        }
+
         private void UpdateView()
         {
             undoButton.Enabled = _actions.Count > 0;
@@ -179,16 +218,18 @@ namespace MeshAnalysis.Controls
 
             foreach (var name in names)
             {
+                //Фигура, соответствующая этой кнопке
+                var value = (FigureKind)Enum.Parse(type, name);
                 //Создаём кнопку
                 var btn = new ToolStripButton
                 {
-                    DisplayStyle = ToolStripItemDisplayStyle.Text,
+                    Image = value.GetAttribute<ImageAttribute>()?.Image,
+                    ImageAlign = ContentAlignment.MiddleLeft,
                     TextAlign = ContentAlignment.MiddleLeft,
                     CheckOnClick = true,
                     Checked = false
                 };
-                //Фигура, соответствующая этой кнопке
-                var value = (FigureKind)Enum.Parse(type, name);
+                btn.DisplayStyle = btn.Image == null ? ToolStripItemDisplayStyle.Text : ToolStripItemDisplayStyle.Image;
                 //Клик по кнопке
                 btn.Click += (sender, args) =>
                 {
@@ -210,26 +251,22 @@ namespace MeshAnalysis.Controls
         private void AddToolstripItems()
         {
             //Добавляем на панель инструментов
-            toolStrip2.Items.Insert(0, new ToolStripControlHost(colorSelectControl1));
-            toolStrip2.Items.Insert(2, new ToolStripControlHost(penWidthNumericUpDown));
-            //Удаляем из формы
-            flowLayoutPanel1.Controls.Remove(colorSelectControl1);
-            flowLayoutPanel1.Controls.Remove(penWidthNumericUpDown);
+            for (var i = flowLayoutPanel1.Controls.Count - 1; i >= 0; i--)
+            {
+                Control control = flowLayoutPanel1.Controls[i];
+                if (control.Tag == null)
+                {
+                    continue;
+                }
+                toolStrip2.Items.Insert(int.Parse(control.Tag.ToString()), new ToolStripControlHost(control));
+                //Удаляем из формы
+                flowLayoutPanel1.Controls.Remove(control);
+            }
             tableLayoutPanel1.Controls.Remove(flowLayoutPanel1);
             flowLayoutPanel1.Dispose();
             //Удаляем лишние строки из таблицы
             tableLayoutPanel1.RowStyles.RemoveAt(1);
 
-        }
-
-        private void AddModeSelectorItems()
-        {
-            var type = typeof(DrawMode);
-            foreach (DrawMode value in Enum.GetValues(type))
-            {
-                modeSelector.Items.Add(value.GetAttribute<DescriptionAttribute>().Description);
-            }
-            modeSelector.SelectedIndex = (int)_drawMode;
         }
 
         /// <summary>Получить рисунок</summary>
@@ -284,7 +321,7 @@ namespace MeshAnalysis.Controls
             {
                 return action;
             }
-            switch (_drawMode)
+            switch (Mode)
             {
                 case DrawMode.FillOnly:
                     action = g => g.FillPath(param.Brush, param.Path);
@@ -343,5 +380,20 @@ namespace MeshAnalysis.Controls
                 btn.Checked = false;
         }
         #endregion
+
+        private void strokeOnlyButton_Click(object sender, EventArgs e)
+        {
+            Mode = DrawMode.StrokeOnly;
+        }
+
+        private void fillOnlyButton_Click(object sender, EventArgs e)
+        {
+            Mode = DrawMode.FillOnly;
+        }
+
+        private void strokeAndFillButton_Click(object sender, EventArgs e)
+        {
+            Mode = DrawMode.StrokeAndFill;
+        }
     }
 }

@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
+using MeshAnalysis.Properties;
 
 namespace MeshAnalysis.Controls
 {
@@ -10,10 +11,10 @@ namespace MeshAnalysis.Controls
     {
         private const float PART = 2 / 3f;
 
-        private readonly Size _defaultSize = new Size(44, 44);
+        private readonly Size _defaultSize = new Size(48, 48);
         private readonly Size _defaultMinimumSize = new Size(24, 24);
-        private readonly SolidBrush _fillBrush = (SolidBrush)Brushes.White;
-        private readonly SolidBrush _strokeBrush = (SolidBrush)Brushes.Black;
+        private Color _fill = Color.White;
+        private Color _stroke = Color.Black;
         private readonly Cursor _defaultCursor = Cursors.Hand;
 
         private RectangleF FillRectangle
@@ -22,8 +23,7 @@ namespace MeshAnalysis.Controls
             {
                 var h = Height * PART;
                 var w = Width * PART;
-                var rect = new RectangleF(Width - w, Height - h, w - 1, h - 1);
-                rect.Inflate(-1, -1);
+                var rect = new RectangleF(Width - w, Height - h, w, h);
                 return rect;
             }
         }
@@ -34,48 +34,65 @@ namespace MeshAnalysis.Controls
             {
                 var h = Height * PART;
                 var w = Width * PART;
-                var rect = new RectangleF(0, 0, w - 1, h - 1);
-                rect.Inflate(-1, -1);
+                var rect = new RectangleF(0, 0, w, h);
                 return rect;
+            }
+        }
+
+        private RectangleF SwapImageRectangle
+        {
+            get
+            {
+                var x = StrokeRectangle.Right;
+                var w = Width - StrokeRectangle.Width;
+                var h = Height - FillRectangle.Height;
+                return new RectangleF(x, 0, w, h);
+            }
+        }
+        private static Image SwapImage
+        {
+            get
+            {
+                return Resources.SwapIcon;
             }
         }
 
         public ColorSelectControl()
         {
             InitializeComponent();
-            SetStyle(ControlStyles.AllPaintingInWmPaint 
+            SetStyle(ControlStyles.AllPaintingInWmPaint
                 | ControlStyles.DoubleBuffer
                 | ControlStyles.OptimizedDoubleBuffer
-                | ControlStyles.ResizeRedraw 
+                | ControlStyles.ResizeRedraw
                 | ControlStyles.UserPaint, true);
 
         }
 
         [Category("Appearance")]
-        public Color FillColor
+        public Color Fill
         {
             get
             {
-                return _fillBrush.Color;
+                return _fill;
             }
             set
             {
-                _fillBrush.Color = value;
+                _fill = value;
                 Invalidate();
                 OnFillColorChanged();
             }
         }
 
         [Category("Appearance")]
-        public Color StrokeColor
+        public Color Stroke
         {
             get
             {
-                return _strokeBrush.Color;
+                return _stroke;
             }
             set
             {
-                _strokeBrush.Color = value;
+                _stroke = value;
                 Invalidate();
                 OnStrokeColorChanged();
             }
@@ -112,19 +129,27 @@ namespace MeshAnalysis.Controls
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
-            var w = Width * PART;
-            var h = Height * PART;
-            var reg = new Region(new RectangleF(0, 0, w, h));
-            reg.Union(new RectangleF(Width - w, Height - h, w, h));
+            var reg = new Region(StrokeRectangle);
+            reg.Union(FillRectangle);
+            reg.Union(SwapImageRectangle);
             Region = reg;
         }
 
         protected override void OnPaint(PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
-            e.Graphics.FillRectangle(Brushes.Black, ClientRectangle);
-            e.Graphics.FillRectangle(_fillBrush, FillRectangle);
-            e.Graphics.FillRectangle(_strokeBrush, StrokeRectangle);
+
+            var rect = FillRectangle.RInflate(-1, -1);
+            e.Graphics.FillRectangle(Brushes.White, rect);
+            rect.Draw(e.Graphics, Pens.Black);
+            e.Graphics.FillRectangle(Fill.Brush(), rect.RInflate(-2, -2));
+
+            rect = StrokeRectangle.RInflate(-1, -1);
+            e.Graphics.FillRectangle(Brushes.White, rect);
+            rect.Draw(e.Graphics, Pens.Black);
+            e.Graphics.FillRectangle(Stroke.Brush(), rect.RInflate(-2, -2));
+
+            e.Graphics.DrawImage(SwapImage, SwapImageRectangle);
         }
 
         protected override void OnMouseClick(MouseEventArgs e)
@@ -139,13 +164,18 @@ namespace MeshAnalysis.Controls
             {
                 index = 0;
             }
+            else if (SwapImageRectangle.Contains(e.Location))
+            {
+                SwapColors();
+                return;
+            }
             if (index == -1)
             {
                 return;
             }
             using (var dialog = new ColorDialog())
             {
-                dialog.Color = index == 0 ? FillColor : StrokeColor;
+                dialog.Color = index == 0 ? Fill : Stroke;
                 dialog.SolidColorOnly = false;
                 if (dialog.ShowDialog(this) != DialogResult.OK)
                 {
@@ -154,10 +184,10 @@ namespace MeshAnalysis.Controls
                 switch (index)
                 {
                     case 0:
-                        FillColor = dialog.Color;
+                        Fill = dialog.Color;
                         break;
                     case 1:
-                        StrokeColor = dialog.Color;
+                        Stroke = dialog.Color;
                         break;
                 }
             }
@@ -203,6 +233,13 @@ namespace MeshAnalysis.Controls
         protected virtual void OnStrokeColorChanged()
         {
             StrokeColorChanged?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void SwapColors()
+        {
+            var temp = Fill;
+            Fill = Stroke;
+            Stroke = temp;
         }
     }
 }

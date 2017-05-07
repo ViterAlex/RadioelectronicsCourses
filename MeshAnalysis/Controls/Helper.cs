@@ -115,5 +115,20 @@ namespace MeshAnalysis.Controls
             var attributes = memInfo[0].GetCustomAttributes(typeof(T), false);
             return attributes.Length > 0 ? (T)attributes[0] : null;
         }
+
+
+        public static RectangleF RInflate(this RectangleF rect, float dx, float dy)
+        {
+            rect.Inflate(dx, dy);
+            return rect;
+        }
+
+        /// <summary>
+        /// Рисование прямоугольника RectangleF
+        /// </summary>
+        public static void Draw(this RectangleF rect, Graphics g, Pen pen)
+        {
+            g.DrawRectangle(pen, rect.X, rect.Y, rect.Width, rect.Height);
+        }
     }
 }
