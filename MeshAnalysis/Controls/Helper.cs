@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -56,14 +57,12 @@ namespace MeshAnalysis.Controls
             return _brush;
         }
 
-        public static SolidBrush CloneTool(this SolidBrush brush)
+        /// <summary>
+        /// Клонирование инструмента
+        /// </summary>
+        public static T CloneTool<T>(this T tool) where T : ICloneable
         {
-            return (SolidBrush)brush.Clone();
-        }
-
-        public static Pen CloneTool(this Pen pen)
-        {
-            return (Pen)pen.Clone();
+            return (T)tool.Clone();
         }
 
         /// <summary>
@@ -129,6 +128,24 @@ namespace MeshAnalysis.Controls
         public static void Draw(this RectangleF rect, Graphics g, Pen pen)
         {
             g.DrawRectangle(pen, rect.X, rect.Y, rect.Width, rect.Height);
+        }
+
+        /// <summary>
+        /// Следующее значение из перечисления
+        /// </summary>
+        public static T Switch<T>(this T value)
+        {
+            if (!typeof(T).IsEnum)
+            {
+                return value;
+            }
+            var values = ((T[])Enum.GetValues(typeof(T))).Distinct().ToArray();
+            for (var i = 0; i < values.Length - 1; i++)
+            {
+                if (value.Equals(values[i]))
+                    return values[i + 1];
+            }
+            return values[0];
         }
     }
 }

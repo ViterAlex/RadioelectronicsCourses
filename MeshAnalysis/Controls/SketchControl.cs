@@ -34,7 +34,7 @@ namespace MeshAnalysis.Controls
         /// <summary>
         /// Режим рисования: Только контур, Только заливка, Контур и заливка
         /// </summary>
-        private DrawMode _drawMode;
+        private ShapeFillMode _shapeFillMode;
         /// <summary>
         /// Цвет заливки
         /// </summary>
@@ -76,41 +76,36 @@ namespace MeshAnalysis.Controls
         }
 
         /// <summary>
-        /// Режим рисования: Только контур, Только заливка, Контур и заливка
+        /// Режим заполнения фигуры: Только контур, Только заливка, Контур и заливка
         /// </summary>
-        private DrawMode Mode
+        private ShapeFillMode ShapeFillMode
         {
             get
             {
-                return _drawMode;
+                return _shapeFillMode;
             }
             set
             {
-                _drawMode = value;
-                switch (_drawMode)
+                if (_shapeFillMode == value)
                 {
-                    case DrawMode.StrokeOnly:
-                        strokeAndFillButton.Checked = false;
-                        fillOnlyButton.Checked = false;
-                        break;
-                    case DrawMode.FillOnly:
-                        strokeAndFillButton.Checked = false;
-                        strokeOnlyButton.Checked = false;
-                        break;
-                    case DrawMode.StrokeAndFill:
-                        strokeOnlyButton.Checked = false;
-                        fillOnlyButton.Checked = false;
-                        break;
+                    return;
                 }
+                _shapeFillMode = value;
+                shapeFillModeButton.Image = _shapeFillMode.GetAttribute<ImageAttribute>()?.Image;
+                shapeFillModeButton.Text = _shapeFillMode.GetAttribute<DescriptionAttribute>()?.Description;
+                Invalidate(true);
             }
         }
 
         #endregion
 
         public SketchControl()
+
         {
             InitializeComponent();
             sketchPanel.SetDoubleBuffered();
+            _shapeFillMode=ShapeFillMode.FillOnly;
+            ShapeFillMode = ShapeFillMode.StrokeOnly;
             Load += (sender, args) =>
             {
                 StartNewSketch();
@@ -321,12 +316,12 @@ namespace MeshAnalysis.Controls
             {
                 return action;
             }
-            switch (Mode)
+            switch (ShapeFillMode)
             {
-                case DrawMode.FillOnly:
+                case ShapeFillMode.FillOnly:
                     action = g => g.FillPath(param.Brush, param.Path);
                     break;
-                case DrawMode.StrokeAndFill:
+                case ShapeFillMode.StrokeAndFill:
                     action = g =>
                     {
                         g.FillPath(param.Brush, param.Path);
@@ -380,20 +375,31 @@ namespace MeshAnalysis.Controls
                 btn.Checked = false;
         }
         #endregion
-
-        private void strokeOnlyButton_Click(object sender, EventArgs e)
+        //Закрытие меню выбора режима заливки
+        private void shapeFillModeButton_DropDownClosed(object sender, EventArgs e)
         {
-            Mode = DrawMode.StrokeOnly;
+            shapeFillModeButton.DropDownItems.Clear();
         }
 
-        private void fillOnlyButton_Click(object sender, EventArgs e)
+        private void shapeFillModeButton_DropDownOpening(object sender, EventArgs e)
         {
-            Mode = DrawMode.FillOnly;
+            shapeFillModeButton.Image = _shapeFillMode.GetAttribute<ImageAttribute>()?.Image;
+            foreach (ShapeFillMode value in Enum.GetValues(typeof(ShapeFillMode)))
+            {
+                var tsmi = new ToolStripMenuItem
+                {
+                    Text = value.GetAttribute<DescriptionAttribute>()?.Description,
+                    Image = value.GetAttribute<ImageAttribute>()?.Image,
+                    Checked = value == ShapeFillMode
+                };
+                tsmi.Click += (o, args) => ShapeFillMode = value;
+                shapeFillModeButton.DropDownItems.Add(tsmi);
+            }
         }
 
-        private void strokeAndFillButton_Click(object sender, EventArgs e)
+        private void drawModeSelectButton_ButtonClick(object sender, EventArgs e)
         {
-            Mode = DrawMode.StrokeAndFill;
+            ShapeFillMode = ShapeFillMode.Switch();
         }
     }
 }

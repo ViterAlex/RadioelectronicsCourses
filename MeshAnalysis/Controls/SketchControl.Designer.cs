@@ -37,16 +37,13 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.figuresToolStrip = new System.Windows.Forms.ToolStrip();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.redoButton = new System.Windows.Forms.ToolStripButton();
             this.undoButton = new System.Windows.Forms.ToolStripButton();
+            this.redoButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.clearButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.strokeOnlyButton = new System.Windows.Forms.ToolStripButton();
-            this.fillOnlyButton = new System.Windows.Forms.ToolStripButton();
-            this.strokeAndFillButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.shapeFillModeButton = new System.Windows.Forms.ToolStripSplitButton();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.colorSelectControl1 = new MeshAnalysis.Controls.ColorSelectControl();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -134,7 +131,7 @@
             this.penWidthNumericUpDown.Name = "penWidthNumericUpDown";
             this.penWidthNumericUpDown.Size = new System.Drawing.Size(51, 20);
             this.penWidthNumericUpDown.TabIndex = 7;
-            this.penWidthNumericUpDown.Tag = "10";
+            this.penWidthNumericUpDown.Tag = "8";
             this.penWidthNumericUpDown.Value = new decimal(new int[] {
             1,
             0,
@@ -180,32 +177,13 @@
             this.toolStripSeparator1,
             this.clearButton,
             this.toolStripSeparator3,
-            this.strokeOnlyButton,
-            this.strokeAndFillButton,
-            this.fillOnlyButton,
-            this.toolStripLabel1,
-            this.toolStripSeparator2});
+            this.shapeFillModeButton,
+            this.toolStripLabel1});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.Size = new System.Drawing.Size(645, 25);
             this.toolStrip2.TabIndex = 7;
             this.toolStrip2.Text = "toolStrip2";
-            // 
-            // toolStripLabel1
-            // 
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(84, 22);
-            this.toolStripLabel1.Text = "Размер кисти:";
-            // 
-            // redoButton
-            // 
-            this.redoButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.redoButton.Image = global::MeshAnalysis.Properties.Resources.Redo;
-            this.redoButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.redoButton.Name = "redoButton";
-            this.redoButton.Size = new System.Drawing.Size(23, 22);
-            this.redoButton.Text = "Повторить";
-            this.redoButton.Click += new System.EventHandler(this.redoButton_Click);
             // 
             // undoButton
             // 
@@ -216,6 +194,16 @@
             this.undoButton.Size = new System.Drawing.Size(23, 22);
             this.undoButton.Text = "Отменить";
             this.undoButton.Click += new System.EventHandler(this.undoButton_Click);
+            // 
+            // redoButton
+            // 
+            this.redoButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.redoButton.Image = global::MeshAnalysis.Properties.Resources.Redo;
+            this.redoButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.redoButton.Name = "redoButton";
+            this.redoButton.Size = new System.Drawing.Size(23, 22);
+            this.redoButton.Text = "Повторить";
+            this.redoButton.Click += new System.EventHandler(this.redoButton_Click);
             // 
             // toolStripSeparator1
             // 
@@ -232,48 +220,28 @@
             this.clearButton.Text = "Очистить";
             this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // strokeOnlyButton
-            // 
-            this.strokeOnlyButton.CheckOnClick = true;
-            this.strokeOnlyButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.strokeOnlyButton.Image = global::MeshAnalysis.Properties.Resources.StrokeOnly;
-            this.strokeOnlyButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.strokeOnlyButton.Name = "strokeOnlyButton";
-            this.strokeOnlyButton.Size = new System.Drawing.Size(23, 22);
-            this.strokeOnlyButton.Text = "Только контур";
-            this.strokeOnlyButton.Click += new System.EventHandler(this.strokeOnlyButton_Click);
-            // 
-            // fillOnlyButton
-            // 
-            this.fillOnlyButton.CheckOnClick = true;
-            this.fillOnlyButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.fillOnlyButton.Image = global::MeshAnalysis.Properties.Resources.FillOnly;
-            this.fillOnlyButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.fillOnlyButton.Name = "fillOnlyButton";
-            this.fillOnlyButton.Size = new System.Drawing.Size(23, 22);
-            this.fillOnlyButton.Text = "Только заливка";
-            this.fillOnlyButton.Click += new System.EventHandler(this.fillOnlyButton_Click);
-            // 
-            // strokeAndFillButton
-            // 
-            this.strokeAndFillButton.CheckOnClick = true;
-            this.strokeAndFillButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.strokeAndFillButton.Image = global::MeshAnalysis.Properties.Resources.StrokeAndFill;
-            this.strokeAndFillButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.strokeAndFillButton.Name = "strokeAndFillButton";
-            this.strokeAndFillButton.Size = new System.Drawing.Size(23, 22);
-            this.strokeAndFillButton.Text = "Контур и заливка";
-            this.strokeAndFillButton.Click += new System.EventHandler(this.strokeAndFillButton_Click);
-            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // shapeFillModeButton
+            // 
+            this.shapeFillModeButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.shapeFillModeButton.Image = ((System.Drawing.Image)(resources.GetObject("shapeFillModeButton.Image")));
+            this.shapeFillModeButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.shapeFillModeButton.Name = "shapeFillModeButton";
+            this.shapeFillModeButton.Size = new System.Drawing.Size(32, 22);
+            this.shapeFillModeButton.Text = "toolStripSplitButton1";
+            this.shapeFillModeButton.ButtonClick += new System.EventHandler(this.drawModeSelectButton_ButtonClick);
+            this.shapeFillModeButton.DropDownClosed += new System.EventHandler(this.shapeFillModeButton_DropDownClosed);
+            this.shapeFillModeButton.DropDownOpening += new System.EventHandler(this.shapeFillModeButton_DropDownOpening);
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(84, 22);
+            this.toolStripLabel1.Text = "Размер кисти:";
             // 
             // colorSelectControl1
             // 
@@ -283,7 +251,7 @@
             this.colorSelectControl1.Size = new System.Drawing.Size(62, 75);
             this.colorSelectControl1.Stroke = System.Drawing.Color.Black;
             this.colorSelectControl1.TabIndex = 9;
-            this.colorSelectControl1.Tag = "8";
+            this.colorSelectControl1.Tag = "6";
             // 
             // SketchControl
             // 
@@ -320,10 +288,7 @@
         private System.Windows.Forms.ToolStripButton clearButton;
         private System.Windows.Forms.Label label1;
         private ColorSelectControl colorSelectControl1;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripButton strokeOnlyButton;
-        private System.Windows.Forms.ToolStripButton fillOnlyButton;
-        private System.Windows.Forms.ToolStripButton strokeAndFillButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripSplitButton shapeFillModeButton;
     }
 }

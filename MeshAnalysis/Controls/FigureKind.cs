@@ -1,33 +1,19 @@
 using System.ComponentModel;
-using System.Drawing;
-using MeshAnalysis.Properties;
 
 namespace MeshAnalysis.Controls
 {
     public enum FigureKind
     {
         None,
-        [Description("Эллипс")]
-        [Image("EllipseToolIcon")]
-        Ellipse,
-        [Description("Прямоугольник")]
-        [Image("RectangleToolIcon")]
-        Rectangle,
-        [Description("Прямая")]
-        [Image("LineToolIcon")]
-        Line
+        [Description("Эллипс"), Image("EllipseToolIcon")] Ellipse,
+        [Description("Прямоугольник"), Image("RectangleToolIcon")] Rectangle,
+        [Description("Прямая"), Image("LineToolIcon")] Line
     }
 
-    public enum DrawMode
+    public enum ShapeFillMode
     {
-        [Description("Только контур")]
-        [Image("StrokeOnly")]
-        StrokeOnly,
-        [Description("Только заливка")]
-        [Image("FillOnly")]
-        FillOnly,
-        [Description("Заливка и контур")]
-        [Image("StrokeAndFill")]
-        StrokeAndFill
+        [Description("Только контур"), Image("StrokeOnly")] StrokeOnly,
+        [Description("Только заливка"), Image("FillOnly")] FillOnly,
+        [Description("Заливка и контур"), Image("StrokeAndFill")] StrokeAndFill
     }
 }
