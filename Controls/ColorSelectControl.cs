@@ -192,23 +192,36 @@ namespace Controls
                 }
             }
         }
-
         protected override void OnMouseMove(MouseEventArgs e)
         {
+            ShowTooltip(e.Location);
+        }
+
+        //Прямоугольник в котором находился курсор в предыдущий вызов. чтобы избежать мерцания подсказки
+        private RectangleF _prevRect;
+        private void ShowTooltip(Point pt)
+        {
             var tooltip = string.Empty;
-            if (StrokeRectangle.Contains(e.Location))
+            RectangleF rect = new RectangleF();
+            if (StrokeRectangle.Contains(pt))
             {
-                tooltip = "Цвет контура";
+                tooltip = Resources.StrokeColorToolTip;
+                rect = StrokeRectangle;
             }
-            else if (FillRectangle.Contains(e.Location))
+            else if (FillRectangle.Contains(pt))
             {
-                tooltip = "Цвет заливки";
+                tooltip = Resources.FillColorToolTip;
+                rect = FillRectangle;
             }
-            else if (SwapImageRectangle.Contains(e.Location))
+            else if (SwapImageRectangle.Contains(pt))
             {
-                tooltip = "Поменять цвета";
+                tooltip = Resources.SwapColorsToolTip;
+                rect = SwapImageRectangle;
             }
-            toolTip1.SetToolTip(this, tooltip);
+            //Если курсор переместился в другой прямоугольник
+            if (!Equals(rect, _prevRect))
+                toolTip1.SetToolTip(this, tooltip);
+            _prevRect = rect;
         }
 
         protected override Cursor DefaultCursor

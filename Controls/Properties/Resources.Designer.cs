@@ -61,12 +61,51 @@ namespace Controls.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] EllipseToolCursor {
+            get {
+                object obj = ResourceManager.GetObject("EllipseToolCursor", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap EllipseToolIcon {
             get {
                 object obj = ResourceManager.GetObject("EllipseToolIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] EraserToolCursorMouseDown {
+            get {
+                object obj = ResourceManager.GetObject("EraserToolCursorMouseDown", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap EraserToolIcon {
+            get {
+                object obj = ResourceManager.GetObject("EraserToolIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Цвет заливки.
+        /// </summary>
+        internal static string FillColorToolTip {
+            get {
+                return ResourceManager.GetString("FillColorToolTip", resourceCulture);
             }
         }
         
@@ -81,12 +120,32 @@ namespace Controls.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] LineToolCursor {
+            get {
+                object obj = ResourceManager.GetObject("LineToolCursor", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap LineToolIcon {
             get {
                 object obj = ResourceManager.GetObject("LineToolIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] RectangleToolCursor {
+            get {
+                object obj = ResourceManager.GetObject("RectangleToolCursor", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         
@@ -121,12 +180,30 @@ namespace Controls.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Цвет контура.
+        /// </summary>
+        internal static string StrokeColorToolTip {
+            get {
+                return ResourceManager.GetString("StrokeColorToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap StrokeOnly {
             get {
                 object obj = ResourceManager.GetObject("StrokeOnly", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Поменять цвета.
+        /// </summary>
+        internal static string SwapColorsToolTip {
+            get {
+                return ResourceManager.GetString("SwapColorsToolTip", resourceCulture);
             }
         }
         

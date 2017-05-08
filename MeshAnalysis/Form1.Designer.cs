@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.theoryButton = new System.Windows.Forms.Button();
             this.practiceButton = new System.Windows.Forms.Button();
             this.allButton = new System.Windows.Forms.Button();
@@ -97,6 +98,7 @@
             this.Controls.Add(this.allButton);
             this.Controls.Add(this.practiceButton);
             this.Controls.Add(this.theoryButton);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Главное меню";
             this.Load += new System.EventHandler(this.Form1_Load);

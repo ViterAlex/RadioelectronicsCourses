@@ -66,10 +66,13 @@
     <Compile Include="ColorSelectControl.Designer.cs">
       <DependentUpon>ColorSelectControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="FigureKind.cs" />
-    <Compile Include="Helper.cs" />
+    <Compile Include="EraseTool.cs" />
+    <Compile Include="Helpers\DrawingHelper.cs" />
+    <Compile Include="Helpers\RectangleHelper.cs" />
+    <Compile Include="ToolKind.cs" />
+    <Compile Include="Helpers\Helper.cs" />
     <Compile Include="ICalc.cs" />
-    <Compile Include="ImageAttribute.cs" />
+    <Compile Include="ToolAttribute.cs" />
     <Compile Include="Params.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -100,6 +103,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="SketchControl.resx">
       <DependentUpon>SketchControl.cs</DependentUpon>
@@ -121,7 +125,7 @@
     <None Include="Resources\RectangleToolIcon.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Redo_grey_48x.png" />
+    <None Include="Resources\Redo.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ShapeBothIcon.png" />
@@ -136,7 +140,22 @@
     <None Include="Resources\SwapIcon.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Undo_grey_48x.png" />
+    <None Include="Resources\Undo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EraserToolIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EllipseToolCursor.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LineToolCursor.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RectangleToolCursor.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EraserToolCursorMouseDown.cur" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

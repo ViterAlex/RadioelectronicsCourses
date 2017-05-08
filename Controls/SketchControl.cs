@@ -8,13 +8,15 @@ using System.Windows.Forms;
 
 namespace Controls
 {
+    internal delegate void PaintMethod(Graphics g);
+
     public partial class SketchControl : UserControl
     {
         #region Свойства
         //Стэк повторения действий
-        private readonly Stack<Action<Graphics>> _redo = new Stack<Action<Graphics>>();
-        //Методы, которые будут рисовать фигуры
-        private readonly List<Action<Graphics>> _actions = new List<Action<Graphics>>();
+        private readonly Stack<PaintMethod> _redo = new Stack<PaintMethod>();
+        //Методы рисования
+        private readonly List<PaintMethod> _actions = new List<PaintMethod>();
 
         private Point _endPoint;
         private Point _startPoint;
@@ -26,7 +28,7 @@ namespace Controls
         /// <summary>
         /// Тип фигуры: Окружность, Прямоугольник, Линия
         /// </summary>
-        private FigureKind _figure;
+        private ToolKind _tool;
         /// <summary>
         /// Равные стороны
         /// </summary>
@@ -44,10 +46,11 @@ namespace Controls
         /// </summary>
         private Color _strokeColor;
 
+        private EraseTool _eraseTool;
         /// <summary>
         /// Метод рисования при ведении мышью.
         /// </summary>
-        private Action<Graphics> DragPaint
+        private PaintMethod DragPaint
         {
             get
             {
@@ -59,19 +62,37 @@ namespace Controls
         /// <summary>
         /// Тип фигуры: Окружность, Прямоугольник, Линия
         /// </summary>
-        public FigureKind Figure
+        private ToolKind Tool
         {
             get
             {
-                return _figure;
+                return _tool;
             }
             set
             {
-                _figure = value;
-                if (_figure == FigureKind.None)
+                if (_tool == value) return;
+                _tool = value;
+                switch (_tool)
                 {
-                    UncheckButtons();
+                    case ToolKind.None:
+                        toolsToolStrip.UncheckButtons();
+                        break;
+                    case ToolKind.Ellipse:
+                    case ToolKind.Rectangle:
+                    case ToolKind.Line:
+                        break;
+                    case ToolKind.Eraser:
+                        if (_eraseTool == null)
+                        {
+                            _eraseTool = new EraseTool(10, sketchPanel.BackColor);
+                        }
+                        else
+                        {
+                            _eraseTool.Reset();
+                        }
+                        break;
                 }
+                sketchPanel.Cursor = _tool.GetAttribute<ToolAttribute>()?.ToolCursor;
             }
         }
 
@@ -91,7 +112,7 @@ namespace Controls
                     return;
                 }
                 _shapeFillMode = value;
-                shapeFillModeButton.Image = _shapeFillMode.GetAttribute<ImageAttribute>()?.Image;
+                shapeFillModeButton.Image = _shapeFillMode.GetAttribute<ToolAttribute>()?.Image;
                 shapeFillModeButton.Text = _shapeFillMode.GetAttribute<DescriptionAttribute>()?.Description;
                 Invalidate(true);
             }
@@ -103,13 +124,14 @@ namespace Controls
         {
             InitializeComponent();
             sketchPanel.SetDoubleBuffered();
-            _shapeFillMode=ShapeFillMode.FillOnly;
+            _shapeFillMode = ShapeFillMode.FillOnly;
             ShapeFillMode = ShapeFillMode.StrokeOnly;
             Load += (sender, args) =>
             {
                 StartNewSketch();
                 CreateButtons();
                 AddToolstripItems();
+
                 _fillColor = colorSelectControl1.Fill;
                 _strokeColor = colorSelectControl1.Stroke;
                 colorSelectControl1.FillColorChanged += (_, __) => _fillColor = colorSelectControl1.Fill;
@@ -138,6 +160,7 @@ namespace Controls
             if (_isPressed)
             {
                 _endPoint = e.Location;
+                _eraseTool?.AddErasePoint(e.Location);
                 sketchPanel.Invalidate();
             }
         }
@@ -146,13 +169,23 @@ namespace Controls
         {
             if (_isPressed && _endPoint != Point.Empty)
             {
-                AddAction();
+                if (Tool != ToolKind.Eraser)
+                {
+                    AddAction();
+                }
                 sketchPanel.Invalidate();
             }
             if (e.Button == MouseButtons.Right)
             {
                 SwapColors();
             }
+            if (Tool == ToolKind.Eraser)
+            {
+                _eraseTool.AddErasePoint(e.Location);
+                AddAction();
+                sketchPanel.Invalidate();
+            }
+            _eraseTool?.Reset();
             _isPressed = false;
             _endPoint = Point.Empty;
         }
@@ -161,10 +194,21 @@ namespace Controls
         {
             UpdateView();
             e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
-            foreach (Action<Graphics> ac in _actions)
-                ac(e.Graphics);
-            if (_isPressed)
-                DragPaint?.Invoke(e.Graphics);
+            foreach (PaintMethod pm in _actions)
+                pm(e.Graphics);
+            if (!_isPressed) return;
+            switch (_tool)
+            {
+                case ToolKind.None:
+                case ToolKind.Ellipse:
+                case ToolKind.Rectangle:
+                case ToolKind.Line:
+                    DragPaint?.Invoke(e.Graphics);
+                    break;
+                case ToolKind.Eraser:
+                    _eraseTool.Erase(e.Graphics);
+                    break;
+            }
         }
 
         private void undoButton_Click(object sender, EventArgs e)
@@ -194,13 +238,13 @@ namespace Controls
 
         private void shapeFillModeButton_DropDownOpening(object sender, EventArgs e)
         {
-            shapeFillModeButton.Image = _shapeFillMode.GetAttribute<ImageAttribute>()?.Image;
+            shapeFillModeButton.Image = _shapeFillMode.GetAttribute<ToolAttribute>()?.Image;
             foreach (ShapeFillMode value in Enum.GetValues(typeof(ShapeFillMode)))
             {
                 var tsmi = new ToolStripMenuItem
                 {
                     Text = value.GetAttribute<DescriptionAttribute>()?.Description,
-                    Image = value.GetAttribute<ImageAttribute>()?.Image,
+                    Image = value.GetAttribute<ToolAttribute>()?.Image,
                     Checked = value == ShapeFillMode
                 };
                 tsmi.Click += (o, args) => ShapeFillMode = value;
@@ -234,42 +278,46 @@ namespace Controls
         /// </summary>
         private void CreateButtons()
         {
-            var type = typeof(FigureKind);
+            var type = typeof(ToolKind);
             //Возможные названия фигур
             var names = Enum.GetNames(type).Where(s => s != "None");
 
             foreach (var name in names)
             {
                 //Фигура, соответствующая этой кнопке
-                var value = (FigureKind)Enum.Parse(type, name);
+                var value = (ToolKind)Enum.Parse(type, name);
                 //Создаём кнопку
                 var btn = new ToolStripButton
                 {
-                    Image = value.GetAttribute<ImageAttribute>()?.Image,
+                    Image = value.GetAttribute<ToolAttribute>()?.Image,
                     ImageAlign = ContentAlignment.MiddleLeft,
                     TextAlign = ContentAlignment.MiddleLeft,
                     CheckOnClick = true,
-                    Checked = false
+                    Checked = false,
+                    Tag = value
                 };
                 btn.DisplayStyle = btn.Image == null ? ToolStripItemDisplayStyle.Text : ToolStripItemDisplayStyle.Image;
                 //Клик по кнопке
                 btn.Click += (sender, args) =>
                 {
-                    UncheckButtons(btn);
+                    toolsToolStrip.UncheckButtons(btn);
                     if (!btn.Checked)
                     {
                         //Если кнопка отжата, то убираем фигуру
-                        Figure = FigureKind.None;
+                        Tool = ToolKind.None;
                         return;
                     }
-                    Figure = value;
+                    Tool = value;
                 };
                 //Текст кнопки получаем из атрибута Description
                 btn.Text = value.GetAttribute<DescriptionAttribute>().Description;
-                figuresToolStrip.Items.Insert(0, btn);
+                toolsToolStrip.Items.Add(btn);
             }
         }
 
+        /// <summary>
+        /// Перенос контролов из формы на панель инструментов
+        /// </summary>
         private void AddToolstripItems()
         {
             //Добавляем на панель инструментов
@@ -306,42 +354,51 @@ namespace Controls
         /// <param name="pen">Перо для контура</param>
         private Params GetParams(SolidBrush brush, Pen pen)
         {
-            var path = new GraphicsPath();
-            switch (Figure)
+            var @params = new Params
             {
-                case FigureKind.Ellipse:
-                    path.AddEllipse(_startPoint.GetRectangle(_endPoint, IsEqual));
-                    break;
-                case FigureKind.Rectangle:
-                    path.AddRectangle(_startPoint.GetRectangle(_endPoint, IsEqual));
-                    break;
-                case FigureKind.Line:
-                    path.AddLine(_startPoint, _endPoint);
-                    break;
-                case FigureKind.None:
-                    path.Dispose();
-                    return null;
-            }
-
-            return new Params
-            {
-                Path = path,
+                Path = new GraphicsPath(),
                 Pen = pen.CloneTool(),
-                Brush = brush.CloneTool()
+                Brush = brush.CloneTool(),
             };
+            switch (Tool)
+            {
+                case ToolKind.Ellipse:
+                    @params.Path.AddEllipse(_startPoint.GetRectangle(_endPoint, IsEqual));
+                    break;
+                case ToolKind.Rectangle:
+                    @params.Path.AddRectangle(_startPoint.GetRectangle(_endPoint, IsEqual));
+                    break;
+                case ToolKind.Line:
+                    @params.Path.AddLine(_startPoint, _endPoint);
+                    @params.Brush.Dispose();
+                    break;
+                case ToolKind.Eraser:
+                    @params.Brush = _eraseTool.EraseColor.Brush().CloneTool();
+                    @params.Pen.Dispose();
+                    @params.EraseRegion = _eraseTool.EraseRegion;
+                    break;
+                case ToolKind.None:
+                    @params.Dispose();
+                    @params = null;
+                    break;
+            }
+            return @params;
         }
 
         /// <summary>
         /// Определение метода рисования по параметрам фигуры
         /// </summary>
         /// <param name="param">Параметры фигуры</param>
-        /// <returns></returns>
-        private Action<Graphics> GetPaintMethod(Params param)
+        private PaintMethod GetPaintMethod(Params param)
         {
-            Action<Graphics> action = g => { g.DrawPath(param.Pen, param.Path); };
-            if (Figure == FigureKind.Line)
+            PaintMethod action = null;
+            if (Tool == ToolKind.Line)
             {
-                return action;
+                return g => g.DrawPath(param.Pen, param.Path);
+            }
+            else if (Tool == ToolKind.Eraser)
+            {
+                return g => g.FillRegion(param.Brush, param.EraseRegion);
             }
             switch (ShapeFillMode)
             {
@@ -354,6 +411,9 @@ namespace Controls
                         g.FillPath(param.Brush, param.Path);
                         g.DrawPath(param.Pen, param.Path);
                     };
+                    break;
+                case ShapeFillMode.StrokeOnly:
+                    action = g => { g.DrawPath(param.Pen, param.Path); };
                     break;
             }
             return action;
@@ -378,28 +438,10 @@ namespace Controls
         /// </summary>
         public void StartNewSketch()
         {
-            Figure = FigureKind.None;
+            Tool = ToolKind.None;
             _actions.Clear();
             _redo.Clear();
             sketchPanel.Invalidate();
-        }
-
-        /// <summary>
-        /// Отжимание всех кнопок кроме заданной
-        /// </summary>
-        /// <param name="button">Кнопка, которую оставить нажатой</param>
-        private void UncheckButtons(ToolStripItem button = null)
-        {
-            var toolStripButtons = button != null
-                ? button.GetCurrentParent()
-                        .Items.OfType<ToolStripButton>()
-                        .Where(b => b.CheckOnClick && !b.Equals(button))
-                : figuresToolStrip.Items
-                                  .OfType<ToolStripButton>()
-                                  .Where(b => b.CheckOnClick);
-
-            foreach (var btn in toolStripButtons)
-                btn.Checked = false;
         }
         #endregion
     }

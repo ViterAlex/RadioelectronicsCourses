@@ -36,7 +36,7 @@
             this.penWidthNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.colorSelectControl1 = new ColorSelectControl();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.figuresToolStrip = new System.Windows.Forms.ToolStrip();
+            this.toolsToolStrip = new System.Windows.Forms.ToolStrip();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.undoButton = new System.Windows.Forms.ToolStripButton();
             this.redoButton = new System.Windows.Forms.ToolStripButton();
@@ -157,7 +157,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel1, 1, 1);
-            this.tableLayoutPanel2.Controls.Add(this.figuresToolStrip, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.toolsToolStrip, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.toolStrip2, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
@@ -169,15 +169,15 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(645, 486);
             this.tableLayoutPanel2.TabIndex = 6;
             // 
-            // figuresToolStrip
+            // toolsToolStrip
             // 
-            this.figuresToolStrip.Dock = System.Windows.Forms.DockStyle.Left;
-            this.figuresToolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.figuresToolStrip.Location = new System.Drawing.Point(0, 25);
-            this.figuresToolStrip.Name = "figuresToolStrip";
-            this.figuresToolStrip.Size = new System.Drawing.Size(26, 461);
-            this.figuresToolStrip.TabIndex = 6;
-            this.figuresToolStrip.Text = "figuresToolStrip";
+            this.toolsToolStrip.Dock = System.Windows.Forms.DockStyle.Left;
+            this.toolsToolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolsToolStrip.Location = new System.Drawing.Point(0, 25);
+            this.toolsToolStrip.Name = "toolsToolStrip";
+            this.toolsToolStrip.Size = new System.Drawing.Size(26, 461);
+            this.toolsToolStrip.TabIndex = 6;
+            this.toolsToolStrip.Text = "toolsToolStrip";
             // 
             // toolStrip2
             // 
@@ -286,7 +286,7 @@
         private System.Windows.Forms.NumericUpDown penWidthNumericUpDown;
         private System.Windows.Forms.Panel sketchPanel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.ToolStrip figuresToolStrip;
+        private System.Windows.Forms.ToolStrip toolsToolStrip;
         private System.Windows.Forms.ToolStrip toolStrip2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;

@@ -118,20 +118,35 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="EllipseToolCursor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EllipseToolCursor.cur;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="EllipseToolIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\EllipseToolIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EraserToolCursorMouseDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EraserToolCursorMouseDown.cur;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="EraserToolIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EraserToolIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="FillOnly" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ShapeInteriorIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="LineToolCursor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LineToolCursor.cur;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="LineToolIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LineToolIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RectangleToolCursor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RectangleToolCursor.cur;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="RectangleToolIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\RectangleToolIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Redo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Redo_grey_48x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\Redo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="StrokeAndFill" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ShapeBothIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -143,6 +158,16 @@
     <value>..\Resources\SwapIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Undo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Undo_grey_48x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\Undo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="StrokeColorToolTip" xml:space="preserve">
+    <value>Цвет контура</value>
+  </data>
+  <data name="FillColorToolTip" xml:space="preserve">
+    <value>Цвет заливки</value>
+    <comment>Подсказка над цветом заливки</comment>
+  </data>
+  <data name="SwapColorsToolTip" xml:space="preserve">
+    <value>Поменять цвета</value>
   </data>
 </root>
