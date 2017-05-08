@@ -101,5 +101,23 @@ namespace MeshAnalysis.Properties {
                 return ((System.Drawing.Icon)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Заметки.
+        /// </summary>
+        internal static string ReportNotesHtmlHeader {
+            get {
+                return ResourceManager.GetString("ReportNotesHtmlHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Результат.
+        /// </summary>
+        internal static string ReportResultHtmltHeader {
+            get {
+                return ResourceManager.GetString("ReportResultHtmltHeader", resourceCulture);
+            }
+        }
     }
 }

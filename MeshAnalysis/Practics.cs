@@ -16,16 +16,7 @@ namespace MeshAnalysis
     /// </summary>
     public partial class Practics : Form
     {
-        //int good = 0, bad = 0, chains = 0, chains1, chains2;
-
         int allex = 0;
-
-        //int chains3, chains4, chains5;
-        //string ex1 = "Задача 1\n", ex2 = "Задача 2", ex3 = "Задача 3",
-        //    ex4 = "Задача 4", ex5 = "Задача 5", br = "<br>", hr = "<hr>",
-        //    pex1, pex2, pex3, pex4, pex5,
-        //    aex1, aex2, aex3, aex4, aex5, try1, zam = "Заметки: ", answ = "Ответ: ", zad = "Условие: ";
-        //int r = 0, gr = 0, b = 0;
 
         private int _exerciseNumber;//Номер текущего вопроса
         private int _bad;//Количество неправильных ответов
@@ -144,190 +135,6 @@ namespace MeshAnalysis
 
         private void answerButton_Click(object sender, EventArgs e)
         {
-            /*if (casesControl1.isSel == 0)
-            {
-                MessageBox.Show("Выберите ответ!");
-                return;
-            }
-            */
-            //textBox2.Clear();
-            //allex++;
-            //chains++;
-            //panel1.Refresh();
-            //switch (_exerciseNumber)
-            //{
-            //    case 0:
-            //        chains1++;
-            //        pex1 = textBox2.Text;
-            //        if (casesControl1.CheckAnswers())
-            //        {
-            //            ex1Button.Enabled = false;
-            //            tableLayoutPanel1.Enabled = false;
-            //            _good++;
-            //            _exerciseNumber++;
-            //            MessageBox.Show(casesControl1.GetAnswers());
-            //            aex1 += casesControl1.GetAnswers();
-            //            ex1 = textBox1.Text;
-            //            allex++;
-            //            ex2Button.PerformClick();
-            //            good++;
-            //            //ex1 = textBox1.Text;
-            //            
-            //        }
-            //        else if (chains1 == 3)
-            //        {
-            //            ex1Button.Enabled = false;
-            //            tableLayoutPanel1.Enabled = false;
-            //            MessageBox.Show(casesControl1.GetAnswers());
-            //            aex1 += casesControl1.GetAnswers();
-            //            ex1 = textBox1.Text;
-            //            bad++;
-            //            allex++;
-            //            //MessageBox.Show(this, "НЕПРАВИЛЬНО!");
-            //            ex2Button.PerformClick();
-            //            //ex1 = textBox1.Text;
-            //            
-            //        }
-            //        else MessageBox.Show(casesControl1.GetAnswers());
-            //        break;
-            //    case 1:
-            //        chains2++;
-            //        pex2 = textBox2.Text;
-            //        if (casesControl1.CheckAnswers())
-            //        {
-            //            ex2Button.Enabled = false;
-            //            tableLayoutPanel1.Enabled = false;
-            //            _good++;
-            //            _exerciseNumber++;
-            //            MessageBox.Show(casesControl1.GetAnswers());
-            //            aex2 = casesControl1.GetAnswers();
-            //            ex2 = textBox1.Text;
-            //            allex++;
-            //            ex3Button.PerformClick();
-            //            good++;
-            //            //ex2 = textBox1.Text;
-            //            
-            //        }
-            //        else if (chains2 == 3)
-            //        {
-            //            ex2Button.Enabled = false;
-            //            tableLayoutPanel1.Enabled = false;
-            //            MessageBox.Show(casesControl1.GetAnswers());
-            //            aex2 = casesControl1.GetAnswers();
-            //            ex2 = textBox1.Text;
-            //            bad++;
-            //            allex++;
-            //            ex3Button.PerformClick();
-            //            //ex2 = textBox1.Text;
-            //            
-            //        }
-            //        else MessageBox.Show(casesControl1.GetAnswers());
-            //        break;
-            //    case 2:
-            //        chains3++;
-            //        pex3 = textBox2.Text;
-            //        if (casesControl1.CheckAnswers())
-            //        {
-            //            ex3Button.Enabled = false;
-            //            tableLayoutPanel1.Enabled = false;
-            //            _good++;
-            //            _exerciseNumber++;
-            //            MessageBox.Show(casesControl1.GetAnswers());
-            //            aex3 = casesControl1.GetAnswers();
-            //            ex3 = textBox1.Text;
-            //            allex++;
-            //            ex4Button.PerformClick();
-            //            good++;
-            //            //ex3 = textBox1.Text;
-            //            
-            //        }
-            //        else if (chains3 == 3)
-            //        {
-            //            ex3Button.Enabled = false;
-            //            tableLayoutPanel1.Enabled = false;
-            //            MessageBox.Show(casesControl1.GetAnswers());
-            //            aex3 = casesControl1.GetAnswers();
-            //            ex3 = textBox1.Text;
-            //            bad++;
-            //            allex++;
-            //            ex4Button.PerformClick();
-            //            //ex3 = textBox1.Text;
-            //            
-            //        }
-            //        else MessageBox.Show(casesControl1.GetAnswers());
-            //        break;
-            //    case 3:
-            //        chains4++;
-            //        pex4 = textBox2.Text;
-            //        if (casesControl1.CheckAnswers())
-            //        {
-            //            ex4Button.Enabled = false;
-            //            tableLayoutPanel1.Enabled = false;
-            //            _good++;
-            //            _exerciseNumber++;
-            //            MessageBox.Show(casesControl1.GetAnswers());
-            //            aex4 = casesControl1.GetAnswers();
-            //            ex4 = textBox1.Text;
-            //            allex++;
-            //            ex5Button.PerformClick();
-            //            good++;
-            //            //ex4 = textBox1.Text;
-            //            
-            //        }
-            //        else if (chains4 == 3)
-            //        {
-            //            ex4Button.Enabled = false;
-            //            tableLayoutPanel1.Enabled = false;
-            //            MessageBox.Show(casesControl1.GetAnswers());
-            //            aex4 = casesControl1.GetAnswers();
-            //            ex4 = textBox1.Text;
-            //            bad++;
-            //            allex++;
-            //            ex5Button.PerformClick();
-            //            //ex4 = textBox1.Text;
-            //            
-            //        }
-            //        else MessageBox.Show(casesControl1.GetAnswers());
-            //        break;
-            //    case 4:
-            //        chains5++;
-            //        pex5 = textBox2.Text;
-            //        if (casesControl1.CheckAnswers())
-            //        {
-            //            ex5Button.Enabled = false;
-            //            tableLayoutPanel1.Enabled = false;
-            //            _good++;
-            //            _exerciseNumber++;
-            //            allex++;
-            //            MessageBox.Show(casesControl1.GetAnswers());
-            //            aex5 = casesControl1.GetAnswers();
-            //            ex5 = textBox1.Text;
-            //            ex1Button.PerformClick();
-            //            good++;
-            //            //ex5 = textBox1.Text;
-            //            
-            //        }
-            //        else if (chains5 == 3)
-            //        {
-            //            ex5Button.Enabled = false;
-            //            tableLayoutPanel1.Enabled = false;
-            //            MessageBox.Show(casesControl1.GetAnswers());
-            //            aex5 = casesControl1.GetAnswers();
-            //            ex5 = textBox1.Text;
-            //            bad++;
-            //            allex++;
-            //            ex1Button.PerformClick();
-            //            //ex5 = textBox1.Text;
-            //            
-            //        }
-            //        else MessageBox.Show(casesControl1.GetAnswers());
-            //        break;
-            //    default:
-            //        MessageBox.Show(this, string.Format("Правильных ответов: {0}\r\nНеправильных ответов:{1}", _good, _bad));
-            //        break;
-
-            //}
-
             //Проверяем ответы
             if (casesControl1.CheckAnswers())
             {
@@ -393,10 +200,10 @@ namespace MeshAnalysis
                         sw.WriteLine(result.Excercise.Caption.Text);
                         //Иллюстрация к заданию
                         sw.WriteLine("<br/>\r\n<img src=\"{0}\"/><br/>", result.Excercise.Caption.ImageBase64.Source);
-                        sw.WriteLine("<h3>{0}</h3>\r\n", "Результат");
+                        sw.WriteLine("<h3>{0}</h3>\r\n", Resources.ReportResultHtmltHeader);
                         sw.WriteLine(result.Message.Replace("\r\n", "<br/>"));
                         //Заметки
-                        sw.WriteLine("<h3>{0}</h3><br/>", "Заметки");
+                        sw.WriteLine("<h3>{0}</h3><br/>", Resources.ReportNotesHtmlHeader);
                         sw.WriteLine(result.Notes.Replace("\r\n", "<br/>"));
                         //Если есть картинка, то добавляем её в раздел "Заметки"
                         if (result.Sketch != null)
@@ -406,57 +213,6 @@ namespace MeshAnalysis
                         sw.WriteLine("</td></tr>");
                     }
                     sw.WriteLine("</table>\r\n</body>\r\n</html>");
-                    //sw.WriteLine(zad);
-                    //sw.WriteLine(ex1);
-                    //sw.WriteLine(br);
-                    //sw.WriteLine(answ);
-                    //sw.WriteLine(aex1);
-                    //sw.WriteLine(br);
-                    //sw.WriteLine(zam);
-                    //sw.WriteLine(pex1);
-                    //sw.WriteLine(br);
-                    //sw.WriteLine(hr);
-                    //sw.WriteLine(zad);
-                    //sw.WriteLine(ex2);
-                    //sw.WriteLine(br);
-                    //sw.WriteLine(answ);
-                    //sw.WriteLine(aex2);
-                    //sw.WriteLine(br);
-                    //sw.WriteLine(zam);
-                    //sw.WriteLine(pex2);
-                    //sw.WriteLine(br);
-                    //sw.WriteLine(hr);
-                    //sw.WriteLine(zad);
-                    //sw.WriteLine(ex3);
-                    //sw.WriteLine(br);
-                    //sw.WriteLine(answ);
-                    //sw.WriteLine(aex3);
-                    //sw.WriteLine(br);
-                    //sw.WriteLine(zam);
-                    //sw.WriteLine(pex3);
-                    //sw.WriteLine(br);
-                    //sw.WriteLine(hr);
-                    //sw.WriteLine(zad);
-                    //sw.WriteLine(ex4);
-                    //sw.WriteLine(br);
-                    //sw.WriteLine(answ);
-                    //sw.WriteLine(aex4);
-                    //sw.WriteLine(br);
-                    //sw.WriteLine(zam);
-                    //sw.WriteLine(pex4);
-                    //sw.WriteLine(br);
-                    //sw.WriteLine(hr);
-                    //sw.WriteLine(zad);
-                    //sw.WriteLine(ex5);
-                    //sw.WriteLine(br);
-                    //sw.WriteLine(answ);
-                    //sw.WriteLine(aex5);
-                    //sw.WriteLine(br);
-                    //sw.WriteLine(zam);
-                    //sw.WriteLine(pex5);
-                    //sw.WriteLine(br);
-                    //sw.WriteLine(hr);
-                    sw.Close();
                 }
             }
         }
