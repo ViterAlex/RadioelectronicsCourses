@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
+using MeshAnalysis;
 
-namespace MeshAnalysis.Controls
+namespace Controls
 {
     public partial class CalcControl : UserControl
     {

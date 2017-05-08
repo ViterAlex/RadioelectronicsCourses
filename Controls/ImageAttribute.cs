@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Drawing;
-using MeshAnalysis.Properties;
+using Controls.Properties;
 
-namespace MeshAnalysis.Controls
+namespace Controls
 {
     /// <summary>
     /// Определяет имя ресурса изображения для данного поля

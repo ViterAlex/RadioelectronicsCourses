@@ -2,8 +2,9 @@
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using XmlTypes;
 
-namespace MeshAnalysis.Controls
+namespace Controls
 {
     public partial class CasesControl : UserControl
     {

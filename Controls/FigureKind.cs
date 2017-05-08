@@ -1,6 +1,6 @@
 using System.ComponentModel;
 
-namespace MeshAnalysis.Controls
+namespace Controls
 {
     public enum FigureKind
     {

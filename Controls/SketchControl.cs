@@ -6,7 +6,7 @@ using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace MeshAnalysis.Controls
+namespace Controls
 {
     public partial class SketchControl : UserControl
     {
@@ -100,7 +100,6 @@ namespace MeshAnalysis.Controls
         #endregion
 
         public SketchControl()
-
         {
             InitializeComponent();
             sketchPanel.SetDoubleBuffered();
@@ -185,6 +184,34 @@ namespace MeshAnalysis.Controls
         {
             _penWidth = (float)penWidthNumericUpDown.Value;
             Invalidate(true);
+        }
+
+        //Закрытие меню выбора режима заливки
+        private void shapeFillModeButton_DropDownClosed(object sender, EventArgs e)
+        {
+            shapeFillModeButton.DropDownItems.Clear();
+        }
+
+        private void shapeFillModeButton_DropDownOpening(object sender, EventArgs e)
+        {
+            shapeFillModeButton.Image = _shapeFillMode.GetAttribute<ImageAttribute>()?.Image;
+            foreach (ShapeFillMode value in Enum.GetValues(typeof(ShapeFillMode)))
+            {
+                var tsmi = new ToolStripMenuItem
+                {
+                    Text = value.GetAttribute<DescriptionAttribute>()?.Description,
+                    Image = value.GetAttribute<ImageAttribute>()?.Image,
+                    Checked = value == ShapeFillMode
+                };
+                tsmi.Click += (o, args) => ShapeFillMode = value;
+                shapeFillModeButton.DropDownItems.Add(tsmi);
+            }
+            Invalidate(true);
+        }
+
+        private void shapeFillModeButton_ButtonClick(object sender, EventArgs e)
+        {
+            ShapeFillMode = ShapeFillMode.Switch();
         }
         #endregion
 
@@ -375,31 +402,5 @@ namespace MeshAnalysis.Controls
                 btn.Checked = false;
         }
         #endregion
-        //Закрытие меню выбора режима заливки
-        private void shapeFillModeButton_DropDownClosed(object sender, EventArgs e)
-        {
-            shapeFillModeButton.DropDownItems.Clear();
-        }
-
-        private void shapeFillModeButton_DropDownOpening(object sender, EventArgs e)
-        {
-            shapeFillModeButton.Image = _shapeFillMode.GetAttribute<ImageAttribute>()?.Image;
-            foreach (ShapeFillMode value in Enum.GetValues(typeof(ShapeFillMode)))
-            {
-                var tsmi = new ToolStripMenuItem
-                {
-                    Text = value.GetAttribute<DescriptionAttribute>()?.Description,
-                    Image = value.GetAttribute<ImageAttribute>()?.Image,
-                    Checked = value == ShapeFillMode
-                };
-                tsmi.Click += (o, args) => ShapeFillMode = value;
-                shapeFillModeButton.DropDownItems.Add(tsmi);
-            }
-        }
-
-        private void drawModeSelectButton_ButtonClick(object sender, EventArgs e)
-        {
-            ShapeFillMode = ShapeFillMode.Switch();
-        }
     }
 }

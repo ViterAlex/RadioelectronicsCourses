@@ -3,9 +3,9 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
-using MeshAnalysis.Properties;
+using Controls.Properties;
 
-namespace MeshAnalysis.Controls
+namespace Controls
 {
     public partial class ColorSelectControl : UserControl
     {
@@ -203,6 +203,10 @@ namespace MeshAnalysis.Controls
             else if (FillRectangle.Contains(e.Location))
             {
                 tooltip = "Цвет заливки";
+            }
+            else if (SwapImageRectangle.Contains(e.Location))
+            {
+                tooltip = "Поменять цвета";
             }
             toolTip1.SetToolTip(this, tooltip);
         }

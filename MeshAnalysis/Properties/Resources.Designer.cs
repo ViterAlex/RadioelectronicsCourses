@@ -61,26 +61,6 @@ namespace MeshAnalysis.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap EllipseToolIcon {
-            get {
-                object obj = ResourceManager.GetObject("EllipseToolIcon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap FillOnly {
-            get {
-                object obj = ResourceManager.GetObject("FillOnly", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to &lt;!DOCTYPE html&gt;
         ///
         ///&lt;html lang=&quot;en&quot; xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
@@ -109,76 +89,6 @@ namespace MeshAnalysis.Properties {
         internal static string HtmlTemplate {
             get {
                 return ResourceManager.GetString("HtmlTemplate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap LineToolIcon {
-            get {
-                object obj = ResourceManager.GetObject("LineToolIcon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap RectangleToolIcon {
-            get {
-                object obj = ResourceManager.GetObject("RectangleToolIcon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Redo {
-            get {
-                object obj = ResourceManager.GetObject("Redo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap StrokeAndFill {
-            get {
-                object obj = ResourceManager.GetObject("StrokeAndFill", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap StrokeOnly {
-            get {
-                object obj = ResourceManager.GetObject("StrokeOnly", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap SwapIcon {
-            get {
-                object obj = ResourceManager.GetObject("SwapIcon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Undo {
-            get {
-                object obj = ResourceManager.GetObject("Undo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

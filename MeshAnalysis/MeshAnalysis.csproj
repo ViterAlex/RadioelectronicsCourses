@@ -42,42 +42,6 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Calc.cs" />
-    <Compile Include="Controls\CalcControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\CalcControl.Designer.cs">
-      <DependentUpon>CalcControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\CaseControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\CaseControl.Designer.cs">
-      <DependentUpon>CaseControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\CasesControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\CasesControl.Designer.cs">
-      <DependentUpon>CasesControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ColorSelectControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\ColorSelectControl.Designer.cs">
-      <DependentUpon>ColorSelectControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Helper.cs" />
-    <Compile Include="Controls\FigureKind.cs" />
-    <Compile Include="Controls\ImageAttribute.cs" />
-    <Compile Include="Controls\Params.cs" />
-    <Compile Include="Controls\SketchControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\SketchControl.Designer.cs">
-      <DependentUpon>SketchControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Helper.cs" />
     <Compile Include="Result.cs" />
     <Compile Include="Select.cs">
       <SubType>Form</SubType>
@@ -85,19 +49,12 @@
     <Compile Include="Select.Designer.cs">
       <DependentUpon>Select.cs</DependentUpon>
     </Compile>
-    <Compile Include="Serialize\Caption.cs" />
-    <Compile Include="Serialize\Case.cs" />
-    <Compile Include="Serialize\Cases.cs" />
-    <Compile Include="Serialize\Excercises.cs" />
-    <Compile Include="Serialize\Excercise.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Serialize\Illustration.cs" />
-    <Compile Include="ICalc.cs" />
     <Compile Include="Practics.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,21 +75,6 @@
     <Compile Include="Theory.Designer.cs">
       <DependentUpon>Theory.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Controls\CalcControl.resx">
-      <DependentUpon>CalcControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\CaseControl.resx">
-      <DependentUpon>CaseControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\CasesControl.resx">
-      <DependentUpon>CasesControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\ColorSelectControl.resx">
-      <DependentUpon>ColorSelectControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\SketchControl.resx">
-      <DependentUpon>SketchControl.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -528,31 +470,17 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Redo_grey_48x.png" />
+    <ProjectReference Include="..\Controls\Controls.csproj">
+      <Project>{63dd1d2b-91de-49ab-869d-4f99ee813d68}</Project>
+      <Name>Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="XmlTypes\XmlTypes.csproj">
+      <Project>{3d1ef10d-ddda-4891-94a8-3c0146b86493}</Project>
+      <Name>XmlTypes</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Undo_grey_48x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\EllipseToolIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\RectangleToolIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ShapeBothIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ShapeInteriorIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ShapeOutlineIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\SwapIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\LineToolIcon.png" />
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

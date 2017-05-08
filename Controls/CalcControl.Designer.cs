@@ -1,4 +1,4 @@
-﻿namespace MeshAnalysis.Controls
+﻿namespace Controls
 {
     partial class CalcControl
     {

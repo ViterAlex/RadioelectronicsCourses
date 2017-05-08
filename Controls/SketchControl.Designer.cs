@@ -1,4 +1,4 @@
-﻿namespace MeshAnalysis.Controls
+﻿namespace Controls
 {
     partial class SketchControl
     {
@@ -34,6 +34,7 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.penWidthNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.colorSelectControl1 = new ColorSelectControl();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.figuresToolStrip = new System.Windows.Forms.ToolStrip();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
@@ -44,7 +45,7 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.shapeFillModeButton = new System.Windows.Forms.ToolStripSplitButton();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.colorSelectControl1 = new MeshAnalysis.Controls.ColorSelectControl();
+            this.hScrollBar1 = new System.Windows.Forms.HScrollBar();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.penWidthNumericUpDown)).BeginInit();
@@ -88,6 +89,7 @@
             this.flowLayoutPanel1.Controls.Add(this.label1);
             this.flowLayoutPanel1.Controls.Add(this.penWidthNumericUpDown);
             this.flowLayoutPanel1.Controls.Add(this.colorSelectControl1);
+            this.flowLayoutPanel1.Controls.Add(this.hScrollBar1);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 216);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -117,7 +119,7 @@
             0,
             0,
             65536});
-            this.penWidthNumericUpDown.Location = new System.Drawing.Point(3, 58);
+            this.penWidthNumericUpDown.Location = new System.Drawing.Point(3, 115);
             this.penWidthNumericUpDown.Maximum = new decimal(new int[] {
             25,
             0,
@@ -138,6 +140,16 @@
             0,
             0});
             this.penWidthNumericUpDown.ValueChanged += new System.EventHandler(this.penWidthNumericUpDown_ValueChanged);
+            // 
+            // colorSelectControl1
+            // 
+            this.colorSelectControl1.Fill = System.Drawing.Color.Maroon;
+            this.colorSelectControl1.Location = new System.Drawing.Point(60, 31);
+            this.colorSelectControl1.Name = "colorSelectControl1";
+            this.colorSelectControl1.Size = new System.Drawing.Size(205, 188);
+            this.colorSelectControl1.Stroke = System.Drawing.Color.Black;
+            this.colorSelectControl1.TabIndex = 9;
+            this.colorSelectControl1.Tag = "6";
             // 
             // tableLayoutPanel2
             // 
@@ -188,7 +200,7 @@
             // undoButton
             // 
             this.undoButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.undoButton.Image = global::MeshAnalysis.Properties.Resources.Undo;
+            this.undoButton.Image = global::Controls.Properties.Resources.Undo;
             this.undoButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.undoButton.Name = "undoButton";
             this.undoButton.Size = new System.Drawing.Size(23, 22);
@@ -198,7 +210,7 @@
             // redoButton
             // 
             this.redoButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.redoButton.Image = global::MeshAnalysis.Properties.Resources.Redo;
+            this.redoButton.Image = global::Controls.Properties.Resources.Redo;
             this.redoButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.redoButton.Name = "redoButton";
             this.redoButton.Size = new System.Drawing.Size(23, 22);
@@ -233,7 +245,7 @@
             this.shapeFillModeButton.Name = "shapeFillModeButton";
             this.shapeFillModeButton.Size = new System.Drawing.Size(32, 22);
             this.shapeFillModeButton.Text = "toolStripSplitButton1";
-            this.shapeFillModeButton.ButtonClick += new System.EventHandler(this.drawModeSelectButton_ButtonClick);
+            this.shapeFillModeButton.ButtonClick += new System.EventHandler(this.shapeFillModeButton_ButtonClick);
             this.shapeFillModeButton.DropDownClosed += new System.EventHandler(this.shapeFillModeButton_DropDownClosed);
             this.shapeFillModeButton.DropDownOpening += new System.EventHandler(this.shapeFillModeButton_DropDownOpening);
             // 
@@ -243,15 +255,12 @@
             this.toolStripLabel1.Size = new System.Drawing.Size(84, 22);
             this.toolStripLabel1.Text = "Размер кисти:";
             // 
-            // colorSelectControl1
+            // hScrollBar1
             // 
-            this.colorSelectControl1.Fill = System.Drawing.Color.Maroon;
-            this.colorSelectControl1.Location = new System.Drawing.Point(60, 31);
-            this.colorSelectControl1.Name = "colorSelectControl1";
-            this.colorSelectControl1.Size = new System.Drawing.Size(62, 75);
-            this.colorSelectControl1.Stroke = System.Drawing.Color.Black;
-            this.colorSelectControl1.TabIndex = 9;
-            this.colorSelectControl1.Tag = "6";
+            this.hScrollBar1.Location = new System.Drawing.Point(268, 28);
+            this.hScrollBar1.Name = "hScrollBar1";
+            this.hScrollBar1.Size = new System.Drawing.Size(80, 17);
+            this.hScrollBar1.TabIndex = 10;
             // 
             // SketchControl
             // 
@@ -290,5 +299,6 @@
         private ColorSelectControl colorSelectControl1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripSplitButton shapeFillModeButton;
+        private System.Windows.Forms.HScrollBar hScrollBar1;
     }
 }

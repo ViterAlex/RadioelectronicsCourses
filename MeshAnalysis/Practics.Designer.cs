@@ -1,4 +1,4 @@
-﻿using MeshAnalysis.Controls;
+﻿using Controls;
 
 namespace MeshAnalysis
 {
@@ -41,7 +41,7 @@ namespace MeshAnalysis
             this.ex3Button = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.casesControl1 = new MeshAnalysis.Controls.CasesControl();
+            this.casesControl1 = new Controls.CasesControl();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.answerButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -50,8 +50,8 @@ namespace MeshAnalysis
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.sketchControl1 = new MeshAnalysis.Controls.SketchControl();
-            this.calcControl1 = new MeshAnalysis.Controls.CalcControl();
+            this.sketchControl1 = new Controls.SketchControl();
+            this.calcControl1 = new Controls.CalcControl();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();

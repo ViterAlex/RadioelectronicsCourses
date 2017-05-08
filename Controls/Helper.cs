@@ -3,10 +3,9 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace MeshAnalysis.Controls
+namespace Controls
 {
     public static class Helper
     {

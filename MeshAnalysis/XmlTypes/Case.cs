@@ -2,7 +2,7 @@ using System;
 using System.ComponentModel;
 using System.Xml.Serialization;
 
-namespace MeshAnalysis
+namespace XmlTypes
 {
     /// <remarks/>
     [Serializable]

@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 using MeshAnalysis.Properties;
+using XmlTypes;
 
 namespace MeshAnalysis
 {
