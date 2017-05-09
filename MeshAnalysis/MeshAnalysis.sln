@@ -7,11 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeshAnalysis", "MeshAnalysi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controls", "..\Controls\Controls.csproj", "{63DD1D2B-91DE-49AB-869D-4F99EE813D68}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XmlTypes", "XmlTypes\XmlTypes.csproj", "{3D1EF10D-DDDA-4891-94A8-3C0146B86493}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XmlTypes", "..\XmlTypes\XmlTypes.csproj", "{3D1EF10D-DDDA-4891-94A8-3C0146B86493}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{5C46D1BA-9DD4-496B-B1FC-DB52471F08C0}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "..\Tests", "{5C46D1BA-9DD4-496B-B1FC-DB52471F08C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controls.Test", "Controls.Test\Controls.Test.csproj", "{9FF5915B-F31E-4C0F-8E53-52CE1527E35B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controls.Test", "..\Tests\Controls.Test\Controls.Test.csproj", "{9FF5915B-F31E-4C0F-8E53-52CE1527E35B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -477,7 +477,7 @@
       <Project>{63dd1d2b-91de-49ab-869d-4f99ee813d68}</Project>
       <Name>Controls</Name>
     </ProjectReference>
-    <ProjectReference Include="XmlTypes\XmlTypes.csproj">
+    <ProjectReference Include="..\XmlTypes\XmlTypes.csproj">
       <Project>{3d1ef10d-ddda-4891-94a8-3c0146b86493}</Project>
       <Name>XmlTypes</Name>
     </ProjectReference>

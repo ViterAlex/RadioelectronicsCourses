@@ -110,7 +110,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MeshAnalysis\XmlTypes\XmlTypes.csproj">
+    <ProjectReference Include="..\XmlTypes\XmlTypes.csproj">
       <Project>{3d1ef10d-ddda-4891-94a8-3c0146b86493}</Project>
       <Name>XmlTypes</Name>
     </ProjectReference>
