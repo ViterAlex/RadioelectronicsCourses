@@ -16,18 +16,21 @@ namespace Controls
         /// <param name="equal">Подгонять ли под квадрат</param>
         public static Rectangle GetRectangle(this Point firstPoint, Point secondPoint, bool equal = false)
         {
-            var w = Math.Abs(firstPoint.X - secondPoint.X);
-            var h = Math.Abs(firstPoint.Y - secondPoint.Y);
-            var pt = new Point
-            {
-                X = secondPoint.X < firstPoint.X ? secondPoint.X : firstPoint.X,
-                Y = secondPoint.Y < firstPoint.Y ? secondPoint.Y : firstPoint.Y
-            };
             if (equal)
             {
-                h = w;
+                //Если подгонять к квадрату, то ширину и высоту считаем по теореме пифагора
+                PointF center = new PointF(
+                    (firstPoint.X + secondPoint.X) / 2.0f, (firstPoint.Y + secondPoint.Y) / 2.0f);
+                var rect = center.SquareFromCenter((float)(firstPoint.Distanse(secondPoint) / 2));
+                return new Rectangle((int)rect.X, (int)rect.Y, (int)rect.Width, (int)rect.Height);
             }
-            return new Rectangle(pt, new Size(w, h));
+
+            int x = Math.Min(firstPoint.X, secondPoint.X);
+            int y = Math.Min(firstPoint.Y, secondPoint.Y);
+            int width = Math.Abs(firstPoint.X - secondPoint.X) + 1;
+            int height = Math.Abs(firstPoint.Y - secondPoint.Y) + 1;
+
+            return new Rectangle(x, y, width, height);
         }
 
         public static RectangleF RInflate(this RectangleF rect, float dx, float dy)
@@ -49,7 +52,25 @@ namespace Controls
         /// </summary>
         public static RectangleF CenterTo(this RectangleF rect, PointF point)
         {
-            return new RectangleF(new PointF(point.X - rect.Width / 2, point.Y - rect.Height / 2), rect.Size);
+            var result = new RectangleF(point,new SizeF());
+            result.Inflate(rect.Width,rect.Height);
+            return result;
+        }
+        /// <summary>
+        /// Расстояние между точками
+        /// </summary>
+        public static double Distanse(this Point start, Point end)
+        {
+            return Math.Sqrt(Math.Pow(end.X - start.X, 2) + Math.Pow(end.Y - start.Y, 2));
+        }
+        /// <summary>
+        /// Квадрат по центральной точке
+        /// </summary>
+        public static RectangleF SquareFromCenter(this PointF point, float radius)
+        {
+            RectangleF ret = new RectangleF(point.X, point.Y, 0, 0);
+            ret.Inflate(radius, radius);
+            return ret;
         }
     }
 }

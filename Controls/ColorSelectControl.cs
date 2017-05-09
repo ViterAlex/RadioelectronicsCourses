@@ -49,6 +49,7 @@ namespace Controls
                 return new RectangleF(x, 0, w, h);
             }
         }
+
         private static Image SwapImage
         {
             get
@@ -156,15 +157,15 @@ namespace Controls
         {
             var index = -1;
             //В каком прямоугольнике кликнули
-            if (StrokeRectangle.Contains(e.Location))
+            if (StrokeRectangle.Contains(e.Location))//цвет контура
             {
                 index = 1;
             }
-            else if (FillRectangle.Contains(e.Location))
+            else if (FillRectangle.Contains(e.Location))//цвет фона
             {
                 index = 0;
             }
-            else if (SwapImageRectangle.Contains(e.Location))
+            else if (SwapImageRectangle.Contains(e.Location))//поменять цвета
             {
                 SwapColors();
                 return;
