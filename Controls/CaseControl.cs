@@ -40,7 +40,7 @@ namespace Controls
         public bool IsCorrectAnswer()
         {
             //Введённое значение округляется до 3 символов и сравнивается со строковым значением из файла.
-            return Math.Round(numericUpDown1.Value, 3).ToString(CultureInfo.CurrentCulture).Equals(_value);
+            return numericUpDown1.Value.ToString("f3", CultureInfo.CurrentCulture).Equals(_value);
         }
     }
 }

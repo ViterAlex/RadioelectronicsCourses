@@ -64,9 +64,9 @@ namespace Controls
         public void Reset()
         {
             _prevPoint = PointF.Empty;
-            _eraserPath.Dispose();
+            _eraserPath?.Dispose();
             _eraserPath = null;
-            _eraseRegion.Dispose();
+            _eraseRegion?.Dispose();
             _eraseRegion = null;
         }
         /// <summary>

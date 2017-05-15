@@ -20,7 +20,11 @@ namespace Controls
 
         [Description("Ластик")]
         [Tool("EraserToolIcon", "EraserToolCursorMouseDown")]
-        Eraser = 4
+        Eraser = 4,
+
+        [Description("Текст")]
+        [Tool("TextToolIcon", "TextToolCursor")]
+        Text = 5
     }
 
     public enum ShapeFillMode
