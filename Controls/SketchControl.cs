@@ -46,7 +46,7 @@ namespace Controls
         /// </summary>
         private Color _strokeColor;
 
-        private EraseTool _eraseTool;
+        private EraseToolOld _eraseTool;
         /// <summary>
         /// Метод рисования при ведении мышью.
         /// </summary>
@@ -84,7 +84,7 @@ namespace Controls
                     case ToolKind.Eraser:
                         if (_eraseTool == null)
                         {
-                            _eraseTool = new EraseTool(10, sketchPanel.BackColor);
+                            _eraseTool = new EraseToolOld(10, sketchPanel.BackColor);
                         }
                         else
                         {

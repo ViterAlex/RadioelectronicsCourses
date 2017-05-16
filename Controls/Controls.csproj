@@ -86,6 +86,10 @@
     <Compile Include="SketchControl.Designer.cs">
       <DependentUpon>SketchControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tools\EraseTool.cs" />
+    <Compile Include="Tools\TextTool.cs" />
+    <Compile Include="Tools\Tool.cs" />
+    <Compile Include="Tools\ToolFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="CalcControl.resx">

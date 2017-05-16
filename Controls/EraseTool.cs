@@ -10,7 +10,7 @@ namespace Controls
     /// <summary>
     /// Инструмент для стирания
     /// </summary>
-    public class EraseTool : IDisposable
+    public class EraseToolOld : IDisposable
     {
 
         private RectangleF _eraseRect;
@@ -18,7 +18,7 @@ namespace Controls
         private Region _eraseRegion;
         private PointF _prevPoint;
 
-        public EraseTool(float diameter, Color color)
+        public EraseToolOld(float diameter, Color color)
         {
             EraseColor = color;
             _eraseRect = new RectangleF(new Point(), new SizeF(diameter, diameter));
